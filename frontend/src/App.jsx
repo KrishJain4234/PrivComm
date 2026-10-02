@@ -1,32 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+
 import TelemetryDashboard from './components/TelemetryDashboard';
-import LiveDashboardTab from './components/LiveDashboardTab';
-import AnalyzerWorkspace from './components/AnalyzerWorkspace';
-import TestbedTab from './components/TestbedTab';
 import HistoryVaultTab from './components/HistoryVaultTab';
 import Overview from './components/Overview';
-import ComplianceTab from './components/ComplianceTab';
+import TechnicalDocsTab from './components/TechnicalDocsTab';
+import IPsecSecurityPage from './components/IPsecSecurityPage';
+import LiveSecurityLabPage from './components/LiveSecurityLabPage';
+
 import { ThemeProvider } from './ThemeContext';
+const VALID_TABS = ['dashboard', 'ipsec-security', 'live-security', 'vault', 'overview', 'docs'];
+
+function getInitialTab() {
+  if (typeof window !== 'undefined') {
+    const hash = window.location.hash.replace('#', '').trim().toLowerCase();
+    if (hash === 'documentation' || hash === 'technical-documentation') return 'docs';
+    // Legacy hash redirects for old bookmarks
+    if (hash === 'analyzer' || hash === 'ipsec') return 'ipsec-security';
+    if (hash === 'live' || hash === 'testbed') return 'live-security';
+    if (hash === 'telemetry') return 'dashboard';
+    if (hash === 'compliance') return 'ipsec-security';
+    if (VALID_TABS.includes(hash)) return hash;
+  }
+  return 'overview';
+}
 
 export default function App() {
-  const [activeTab, setActiveTabRaw] = useState('overview');
+  const [activeTab, setActiveTabRaw] = useState(getInitialTab);
   const [inspectedAnalysis, setInspectedAnalysis] = useState(null);
   const [liveJobId, setLiveJobId] = useState(null);
   const [liveDashboardEnabled, setLiveDashboardEnabled] = useState(false);
   const [showLiveBlockedDialog, setShowLiveBlockedDialog] = useState(false);
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').trim().toLowerCase();
+      let resolved = hash;
+      if (hash === 'documentation' || hash === 'technical-documentation') resolved = 'docs';
+      else if (hash === 'analyzer' || hash === 'ipsec') resolved = 'ipsec-security';
+      else if (hash === 'live' || hash === 'testbed') resolved = 'live-security';
+      else if (hash === 'telemetry') resolved = 'dashboard';
+      else if (hash === 'compliance') resolved = 'ipsec-security';
+      if (VALID_TABS.includes(resolved)) {
+        setActiveTabRaw(resolved);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const setActiveTab = (tab) => {
-    if (tab === 'live' && !liveDashboardEnabled) {
-      setShowLiveBlockedDialog(true);
-      return;
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', `/#${tab}`);
     }
     setActiveTabRaw(tab);
   };
 
   const handleNavigateToAnalysis = (analysisData) => {
     setInspectedAnalysis(analysisData);
-    setActiveTab('dashboard');
+    setActiveTab('ipsec-security');
   };
 
   return (
@@ -49,37 +81,30 @@ export default function App() {
           {activeTab === 'dashboard' && (
             <TelemetryDashboard
               externalAnalysis={inspectedAnalysis}
-              onNavigateToTestbed={() => setActiveTab('testbed')}
-              onNavigateToAnalyzer={() => setActiveTab('analyzer')}
+              onNavigateToTestbed={() => setActiveTab('live-security')}
+              onNavigateToAnalyzer={() => setActiveTab('ipsec-security')}
               onNavigateToOverview={() => setActiveTab('overview')}
             />
           )}
-          {activeTab === 'live' && (
-            <LiveDashboardTab
-              liveJobId={liveJobId}
-              onNavigateToTestbed={() => setActiveTab('testbed')}
-              onNavigateToAnalyzer={() => setActiveTab('analyzer')}
-            />
+          {activeTab === 'ipsec-security' && (
+            <IPsecSecurityPage externalAnalysis={inspectedAnalysis} />
           )}
-          {activeTab === 'analyzer' && <AnalyzerWorkspace externalAnalysis={inspectedAnalysis} />}
-          {activeTab === 'testbed' && (
-            <TestbedTab
+          {activeTab === 'live-security' && (
+            <LiveSecurityLabPage
+              externalAnalysis={inspectedAnalysis}
+              onNavigateToAnalyzer={() => setActiveTab('ipsec-security')}
+              onNavigateToOverview={() => setActiveTab('overview')}
               onNavigateToAnalysis={handleNavigateToAnalysis}
-              onNavigateToLive={(jobId) => {
-                setLiveJobId(jobId);
-                setActiveTab('live');
-              }}
-              onLiveAvailabilityChange={setLiveDashboardEnabled}
             />
           )}
           {activeTab === 'vault' && <HistoryVaultTab onSelectAnalysis={handleNavigateToAnalysis} />}
           {activeTab === 'overview' && (
             <Overview
-              onStartAnalysis={() => setActiveTab('analyzer')}
+              onStartAnalysis={() => setActiveTab('ipsec-security')}
               onViewTelemetry={() => setActiveTab('dashboard')}
             />
           )}
-          {activeTab === 'compliance' && <ComplianceTab />}
+          {activeTab === 'docs' && <TechnicalDocsTab />}
         </main>
 
         {/* Footer */}
@@ -155,7 +180,7 @@ export default function App() {
               <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
                 <button
                   id="live-blocked-go-testbed"
-                  onClick={() => { setShowLiveBlockedDialog(false); setActiveTabRaw('testbed'); }}
+                  onClick={() => { setShowLiveBlockedDialog(false); setActiveTabRaw('live-security'); }}
                   style={{
                     padding: '9px 20px',
                     borderRadius: '8px',
