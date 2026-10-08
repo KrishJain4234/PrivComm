@@ -58,6 +58,45 @@ const FlowConnector = ({ label }) => (
   </>
 );
 
+const TechMark = ({ type, label }) => (
+  <span className={`architecture-tech-mark architecture-tech-mark-${type}`} aria-label={`${label} logo`} title={label}>
+    {type === 'react' && <><span className="tech-orbit tech-orbit-one" /><span className="tech-orbit tech-orbit-two" /><span className="tech-orbit tech-orbit-three" /><span className="tech-core" /></>}
+    {type === 'vite' && <span className="tech-letter">V</span>}
+    {type === 'python' && <span className="tech-letter">Py</span>}
+    {type === 'ml' && <span className="tech-letter">X</span>}
+    {type === 'swan' && <span className="tech-letter">S</span>}
+    {type === 'postgres' && <Database size={18} />}
+    {type === 'sqlite' && <Database size={18} />}
+    {type === 'crypto' && <ShieldCheck size={18} />}
+  </span>
+);
+
+const FunctionCallGraph = () => {
+  const nodes = [
+    ['decode_pcap_in_memory()', 'PCAP / IKE / ESP'],
+    ['parse_ike_payloads()', 'Protocol transforms'],
+    ['extract_flow_features()', '28 statistical features'],
+    ['predict_traffic_class()', 'XGBoost inference'],
+    ['evaluate_security_policy()', 'NIST / PQC checks'],
+    ['generate_merkle_audit_seal()', 'Signed output'],
+  ];
+  return (
+    <div className="architecture-call-graph" aria-label="Runtime function call graph">
+      <div className="architecture-call-graph-track" aria-hidden="true" />
+      {nodes.map(([name, detail], index) => (
+        <div className="architecture-call-node" key={name}>
+          <span className="architecture-call-node-index">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <code>{name}</code>
+            <span>{detail}</span>
+          </div>
+          {index < nodes.length - 1 && <span className="architecture-call-arrow" aria-hidden="true">→</span>}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function ArchitectureTab() {
   const [activeSection, setActiveSection] = useState('hla');
 
@@ -114,7 +153,7 @@ export default function ArchitectureTab() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', paddingBottom: '60px' }}>
+    <div className="architecture-page" style={{ minHeight: '100vh', paddingBottom: '60px' }}>
       
       {/* Hero Header */}
       <header
@@ -304,30 +343,30 @@ export default function ArchitectureTab() {
                 <Cpu size={14} />
                 <span>PrivComm Technology Stack</span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+              <div className="architecture-tech-grid">
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>FRONTEND</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>React 19 + Vite</div>
+                  <div className="architecture-tech-name"><TechMark type="react" label="React" /><TechMark type="vite" label="Vite" /><span>React 19 + Vite</span></div>
                 </div>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>BACKEND</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>FastAPI ASGI</div>
+                  <div className="architecture-tech-name"><TechMark type="python" label="Python" /><span>FastAPI ASGI</span></div>
                 </div>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ML ENGINE</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>XGBoost + IForest</div>
+                  <div className="architecture-tech-name"><TechMark type="ml" label="XGBoost" /><span>XGBoost + IsolationForest</span></div>
                 </div>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>TESTBED</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>strongSwan 4-Node</div>
+                  <div className="architecture-tech-name"><TechMark type="swan" label="strongSwan" /><span>strongSwan 4-Node</span></div>
                 </div>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>PERSISTENCE</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Supabase / SQLite</div>
+                  <div className="architecture-tech-name"><TechMark type="postgres" label="PostgreSQL" /><TechMark type="sqlite" label="SQLite" /><span>Supabase / SQLite</span></div>
                 </div>
-                <div style={{ padding: '8px 10px', background: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <div className="architecture-tech-card">
                   <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ATTESTATION</div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Ed25519 + Merkle</div>
+                  <div className="architecture-tech-name"><TechMark type="crypto" label="Ed25519" /><span>Ed25519 + Merkle</span></div>
                 </div>
               </div>
             </div>
@@ -1073,6 +1112,8 @@ export default function ArchitectureTab() {
                     </p>
                   </div>
                 </div>
+
+                <FunctionCallGraph />
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
                   

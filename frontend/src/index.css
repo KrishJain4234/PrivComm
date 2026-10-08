@@ -685,6 +685,175 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%) scale(1.35);
 }
 
+/* Architecture page: restrained white / black / blue visual system. */
+.architecture-page {
+  --bg-deep: #ffffff;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f8ff;
+  --bg-tertiary: #e8eefc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f8ff;
+  --accent-cyan: #2563eb;
+  --accent-blue: #2563eb;
+  --accent-cyan-dim: #dbeafe;
+  --accent-blue-dim: #dbeafe;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-tertiary: #4b5563;
+  --text-muted: #6b7280;
+  --border-subtle: #dbe3f2;
+  --border-default: #c7d2e8;
+  --border-blueprint: #93b4f4;
+  --status-success: #2563eb;
+  --status-success-dim: #dbeafe;
+  --status-success-border: #93b4f4;
+  --status-warning: #2563eb;
+  --status-warning-dim: #dbeafe;
+  --status-warning-border: #93b4f4;
+  --status-danger: #2563eb;
+  color: var(--text-primary);
+}
+
+.architecture-page [style*="#f43f5e"],
+.architecture-page [style*="#818cf8"] {
+  color: #2563eb !important;
+  background: #2563eb !important;
+}
+
+.architecture-page [style*="radial-gradient"] {
+  background: none !important;
+  filter: none !important;
+}
+
+.architecture-tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+}
+
+.architecture-tech-card {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+}
+
+.architecture-tech-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.architecture-tech-mark {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  overflow: hidden;
+  border: 1px solid #93b4f4;
+  border-radius: 5px;
+  color: #2563eb;
+  background: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 800;
+}
+
+.architecture-tech-mark .tech-letter { line-height: 1; }
+.architecture-tech-mark .tech-core { width: 5px; height: 5px; border-radius: 50%; background: #2563eb; }
+.architecture-tech-mark .tech-orbit { position: absolute; width: 16px; height: 7px; border: 1px solid #2563eb; border-radius: 50%; }
+.architecture-tech-mark .tech-orbit-one { transform: rotate(0deg); }
+.architecture-tech-mark .tech-orbit-two { transform: rotate(60deg); }
+.architecture-tech-mark .tech-orbit-three { transform: rotate(120deg); }
+
+.architecture-call-graph {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(125px, 1fr));
+  gap: 10px;
+  padding: 18px 8px 8px;
+  border: 1px solid #93b4f4;
+  border-radius: 12px;
+  background: #f5f8ff;
+  overflow-x: auto;
+}
+
+.architecture-call-graph-track {
+  position: absolute;
+  top: 47px;
+  right: 8%;
+  left: 8%;
+  height: 2px;
+  background: #2563eb;
+  opacity: 0.45;
+}
+
+.architecture-call-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 125px;
+  min-height: 76px;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 10px 8px;
+  border: 1px solid #93b4f4;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.architecture-call-node-index {
+  display: inline-flex;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #2563eb;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.architecture-call-node code {
+  display: block;
+  color: #111827;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.architecture-call-node > div > span {
+  display: block;
+  margin-top: 5px;
+  color: #4b5563;
+  font-size: 0.62rem;
+  line-height: 1.3;
+}
+
+.architecture-call-arrow {
+  position: absolute;
+  top: 31px;
+  right: -14px;
+  z-index: 3;
+  color: #2563eb;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
 @keyframes architecture-flow-packet {
   0% { top: -5px; opacity: 0; }
   12% { opacity: 1; }
@@ -1328,6 +1497,8 @@ h1, h2, h3, h4, h5, h6 {
   .footer-brand { width: 100%; }
   .footer-brand-line { justify-content: center; flex-wrap: wrap; }
   .footer-demo { margin-right: auto; margin-left: auto; }
+  .architecture-tech-grid { grid-template-columns: 1fr; }
+  .architecture-call-graph { grid-template-columns: repeat(6, 145px); }
 }
 
 /* Isolated Attack VM simulator */
