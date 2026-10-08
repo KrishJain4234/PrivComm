@@ -58,17 +58,8 @@ const FlowConnector = ({ label }) => (
   </>
 );
 
-const TechMark = ({ type, label }) => (
-  <span className={`architecture-tech-mark architecture-tech-mark-${type}`} aria-label={`${label} logo`} title={label}>
-    {type === 'react' && <><span className="tech-orbit tech-orbit-one" /><span className="tech-orbit tech-orbit-two" /><span className="tech-orbit tech-orbit-three" /><span className="tech-core" /></>}
-    {type === 'vite' && <span className="tech-letter">V</span>}
-    {type === 'python' && <span className="tech-letter">Py</span>}
-    {type === 'ml' && <span className="tech-letter">X</span>}
-    {type === 'swan' && <span className="tech-letter">S</span>}
-    {type === 'postgres' && <Database size={18} />}
-    {type === 'sqlite' && <Database size={18} />}
-    {type === 'crypto' && <ShieldCheck size={18} />}
-  </span>
+const TechLogo = ({ name, src }) => (
+  <img className="architecture-tech-logo" src={src} alt={`${name} logo`} title={name} loading="lazy" />
 );
 
 const FunctionCallGraph = () => {
@@ -94,6 +85,44 @@ const FunctionCallGraph = () => {
         </div>
       ))}
     </div>
+  );
+};
+
+const TechnologyStack = () => {
+  const technologies = [
+    { group: 'Frontend', name: 'React 19', logo: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB' },
+    { group: 'Frontend', name: 'Vite', logo: 'Vite', src: 'https://cdn.simpleicons.org/vite/646CFF' },
+    { group: 'Backend', name: 'Python + FastAPI', logo: 'Python', src: 'https://cdn.simpleicons.org/python/3776AB' },
+    { group: 'Backend', name: 'FastAPI ASGI', logo: 'FastAPI', src: 'https://cdn.simpleicons.org/fastapi/009688' },
+    { group: 'ML Engine', name: 'XGBoost', logo: 'XGBoost', src: 'https://cdn.simpleicons.org/xgboost/189FDD' },
+    { group: 'ML Engine', name: 'scikit-learn / IsolationForest', logo: 'scikit-learn', src: 'https://cdn.simpleicons.org/scikitlearn/F7931E' },
+    { group: 'Testbed', name: 'strongSwan', logo: 'strongSwan', src: 'https://cdn.simpleicons.org/strongswan/2563EB' },
+    { group: 'Persistence', name: 'Supabase / PostgreSQL', logo: 'Supabase', src: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
+    { group: 'Persistence', name: 'SQLite', logo: 'SQLite', src: 'https://cdn.simpleicons.org/sqlite/003B57' },
+    { group: 'Runtime', name: 'Docker', logo: 'Docker', src: 'https://cdn.simpleicons.org/docker/2496ED' },
+  ];
+  return (
+    <section className="architecture-technology-section" aria-labelledby="technology-stack-title">
+      <div className="architecture-technology-heading">
+        <div>
+          <span className="architecture-section-kicker">Architecture technology inventory</span>
+          <h3 id="technology-stack-title">Technology Stack</h3>
+          <p>Core technologies used across the interface, APIs, machine-learning pipeline, testbed, and persistence layers.</p>
+        </div>
+        <Cpu size={24} aria-hidden="true" />
+      </div>
+      <div className="architecture-technology-grid">
+        {technologies.map((technology) => (
+          <div className="architecture-technology-card" key={`${technology.group}-${technology.name}`}>
+            <span className="architecture-technology-group">{technology.group}</span>
+            <div className="architecture-technology-logo-row">
+              <TechLogo name={technology.logo} src={technology.src} />
+              <strong>{technology.name}</strong>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
@@ -326,50 +355,6 @@ export default function ArchitectureTab() {
               </nav>
             </div>
 
-            {/* Quick Tech Architecture Card */}
-            <div
-              style={{
-                background: 'linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%)',
-                border: '1px solid var(--border-default)',
-                borderRadius: '16px',
-                padding: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px',
-                boxShadow: 'var(--shadow-sm)'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-cyan)', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                <Cpu size={14} />
-                <span>PrivComm Technology Stack</span>
-              </div>
-              <div className="architecture-tech-grid">
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>FRONTEND</div>
-                  <div className="architecture-tech-name"><TechMark type="react" label="React" /><TechMark type="vite" label="Vite" /><span>React 19 + Vite</span></div>
-                </div>
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>BACKEND</div>
-                  <div className="architecture-tech-name"><TechMark type="python" label="Python" /><span>FastAPI ASGI</span></div>
-                </div>
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ML ENGINE</div>
-                  <div className="architecture-tech-name"><TechMark type="ml" label="XGBoost" /><span>XGBoost + IsolationForest</span></div>
-                </div>
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>TESTBED</div>
-                  <div className="architecture-tech-name"><TechMark type="swan" label="strongSwan" /><span>strongSwan 4-Node</span></div>
-                </div>
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>PERSISTENCE</div>
-                  <div className="architecture-tech-name"><TechMark type="postgres" label="PostgreSQL" /><TechMark type="sqlite" label="SQLite" /><span>Supabase / SQLite</span></div>
-                </div>
-                <div className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ATTESTATION</div>
-                  <div className="architecture-tech-name"><TechMark type="crypto" label="Ed25519" /><span>Ed25519 + Merkle</span></div>
-                </div>
-              </div>
-            </div>
           </aside>
 
           {/* Right Main Content */}
@@ -690,6 +675,7 @@ export default function ArchitectureTab() {
                 </div>
 
               </div>
+
             </section>
 
             {/* ========================================================================= */}
@@ -1231,6 +1217,7 @@ export default function ArchitectureTab() {
 
                 </div>
               </div>
+
             </section>
 
             {/* ========================================================================= */}
@@ -1410,6 +1397,8 @@ export default function ArchitectureTab() {
                 </div>
 
               </div>
+
+              <TechnologyStack />
             </section>
 
           </main>
