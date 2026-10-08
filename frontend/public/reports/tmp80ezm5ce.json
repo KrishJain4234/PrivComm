@@ -1,61 +1,29 @@
 {
     "capture": {
-        "filename": "tmpdwdd8kd8.pcap",
-        "filepath": "C:\\Users\\VIVEK\\AppData\\Local\\Temp\\tmpdwdd8kd8.pcap",
+        "filename": "tmp80ezm5ce.pcap",
+        "filepath": "C:\\Users\\VIVEK\\AppData\\Local\\Temp\\tmp80ezm5ce.pcap",
         "packet_count": 2,
-        "sha256": "3e4cf84d6ae0a3c370962bd9a987198c9597a06cac2b2c7717cda452f46d3f35",
+        "sha256": "a5261909fb10c55f5f8a6b0129a81219145aed424791bbf2f2f83ab44391b851",
         "decoder_error": null
     },
     "packet_evidence": [
         {
-            "frame_number": 1,
-            "timestamp": 1791485189.231312,
-            "protocol": "IKE",
-            "source_ip": "192.168.1.10",
-            "destination_ip": "10.0.0.1",
-            "capture_byte_offset": 82,
-            "capture_byte_length": 60,
-            "fields": {
-                "ike_version": {
-                    "value": "IKEv2",
-                    "capture_byte_offset": 99,
-                    "capture_byte_length": 1
-                },
-                "initiator_spi": {
-                    "value": "1122334455667788",
-                    "capture_byte_offset": 82,
-                    "capture_byte_length": 8
-                },
-                "responder_spi": {
-                    "value": "0000000000000000",
-                    "capture_byte_offset": 90,
-                    "capture_byte_length": 8
-                },
-                "ike_message": {
-                    "value": "IKE header and observable payloads",
-                    "capture_byte_offset": 82,
-                    "capture_byte_length": 60
-                },
-                "transforms": []
-            }
-        },
-        {
             "frame_number": 2,
-            "timestamp": 1791485189.231838,
+            "timestamp": 1791485183.195309,
             "protocol": "ESP",
             "source_ip": "192.168.1.10",
             "destination_ip": "10.0.0.1",
-            "capture_byte_offset": 192,
-            "capture_byte_length": 40,
+            "capture_byte_offset": 164,
+            "capture_byte_length": 12,
             "fields": {
                 "spi": {
-                    "value": "0x00001000",
-                    "capture_byte_offset": 192,
+                    "value": "0x00001234",
+                    "capture_byte_offset": 164,
                     "capture_byte_length": 4
                 },
                 "sequence_number": {
                     "value": 1,
-                    "capture_byte_offset": 196,
+                    "capture_byte_offset": 168,
                     "capture_byte_length": 4
                 }
             }
@@ -64,54 +32,52 @@
     "ipsec": {
         "detected": true,
         "ike_detected": true,
-        "ike_version": "IKEv2",
+        "ike_version": "unknown",
         "esp_detected": true,
         "ah_detected": false,
-        "exchange_type": "IKE_SA_INIT",
-        "encryption": "3DES",
+        "exchange_type": "unknown",
+        "encryption": "unknown",
         "key_length": null,
         "integrity": "unknown",
         "prf": "unknown",
         "dh_group": "unknown",
-        "mode": "Tunnel",
-        "mode_confidence": "high",
+        "mode": "Transport (inferred)",
+        "mode_confidence": "medium",
         "pfs": "unknown",
         "replay_protection": "unknown",
         "sa_lifetime": null,
-        "initiator_spi": "1122334455667788",
+        "initiator_spi": "0000000000000000",
         "responder_spi": "0000000000000000",
         "esp_spis": [
-            "0x00001000"
+            "0x00001234"
         ],
         "ip_version": "IPv4",
         "source_ip": "192.168.1.10",
         "destination_ip": "10.0.0.1",
         "esp_spi_list": [
-            "0000000000000000",
-            "0x00001000",
-            "1122334455667788"
+            "0x00001234"
         ],
         "esp_packet_count": 1
     },
     "traffic_classification": {
         "status": "success",
-        "traffic_type": "VPN-FT",
-        "confidence": 0.6014000177383423,
+        "traffic_type": "VPN-BROWSING",
+        "confidence": 0.33309999108314514,
         "probabilities": {
-            "BROWSING": 0.0017000000225380063,
-            "CHAT": 0.017400000244379044,
-            "FT": 0.20739999413490295,
-            "MAIL": 0.00930000003427267,
-            "P2P": 0.00019999999494757503,
-            "STREAMING": 0.000699999975040555,
-            "VOIP": 0.00139999995008111,
-            "VPN-BROWSING": 0.08560000360012054,
-            "VPN-CHAT": 0.06340000033378601,
-            "VPN-FT": 0.6014000177383423,
-            "VPN-MAIL": 0.006500000134110451,
-            "VPN-P2P": 0.002899999963119626,
-            "VPN-STREAMING": 0.0005000000237487257,
-            "VPN-VOIP": 0.001500000013038516
+            "BROWSING": 0.0019000000320374966,
+            "CHAT": 0.11309999972581863,
+            "FT": 0.1687999963760376,
+            "MAIL": 0.05590000003576279,
+            "P2P": 0.0006000000284984708,
+            "STREAMING": 0.0020000000949949026,
+            "VOIP": 0.0013000000035390258,
+            "VPN-BROWSING": 0.33309999108314514,
+            "VPN-CHAT": 0.1517000049352646,
+            "VPN-FT": 0.133200004696846,
+            "VPN-MAIL": 0.027499999850988388,
+            "VPN-P2P": 0.006300000008195639,
+            "VPN-STREAMING": 0.0013000000035390258,
+            "VPN-VOIP": 0.0034000000450760126
         }
     },
     "metadata_exposure": {
@@ -140,10 +106,10 @@
             "summary": "No unencrypted identity payloads exposed in packet headers."
         },
         "spi_correlation": {
-            "initiator_spi": "1122334455667788",
+            "initiator_spi": "0000000000000000",
             "responder_spi": "0000000000000000",
             "esp_spis": [
-                "0x00001000"
+                "0x00001234"
             ],
             "total_unique_spis": 2,
             "spi_linkability_risk": "MEDIUM",
@@ -151,7 +117,7 @@
             "description": "ESP SPI values are transmitted in cleartext (RFC 4303). Network eavesdroppers can track tunnel session flows across network topological changes using SPI headers."
         },
         "transport_mode_exposure": {
-            "encapsulation_mode": "Tunnel",
+            "encapsulation_mode": "Transport (inferred)",
             "inner_header_exposed": false,
             "exposed_metadata_bytes_per_pkt": 0,
             "exposure_risk": "LOW",
@@ -163,76 +129,37 @@
                 "category": "Metadata Exposure",
                 "severity": "LOW",
                 "title": "Static SPI Header Linkability / Session Tracking Risk",
-                "observed": "Observable ESP SPI(s): 0x00001000",
+                "observed": "Observable ESP SPI(s): 0x00001234",
                 "expected": "Dynamic SA Rekeying & SPI Rotation",
                 "recommendation": "Ensure frequent Security Association rekeying to prevent passive netflow session correlation."
             }
         ]
     },
     "security_assessment": {
-        "risk_score": 35,
-        "risk_level": "MEDIUM",
+        "risk_score": 5,
+        "risk_level": "LOW",
         "methodology": "deterministic_policy_weighting",
-        "findings_count": 2,
+        "findings_count": 1,
         "findings": [
-            {
-                "finding_id": "IPSEC-ENC-001",
-                "category": "Encryption",
-                "severity": "HIGH",
-                "title": "Weak or forbidden encryption algorithm detected",
-                "observed": "3DES",
-                "expected": "Approved encryption (AES-256-GCM, AES-128-GCM, AES-256-CBC, ENCR_AES_GCM_16, ENCR_AES_CBC)",
-                "recommendation": "Reconfigure IPsec proposals to use strong encryption algorithms such as AES-256-GCM.",
-                "status": null,
-                "evidence_references": [
-                    {
-                        "frame_number": 1,
-                        "timestamp": 1791485189.231312,
-                        "protocol": "IKE",
-                        "capture_byte_offset": 82,
-                        "capture_byte_length": 60,
-                        "evidence_scope": "related packet context; this reference does not prove hidden or unobserved configuration"
-                    }
-                ],
-                "evidence_status": "referenced"
-            },
             {
                 "finding_id": "IPSEC-META-003",
                 "category": "Metadata Exposure",
                 "severity": "LOW",
                 "title": "Static SPI Header Linkability / Session Tracking Risk",
-                "observed": "Observable ESP SPI(s): 0x00001000",
+                "observed": "Observable ESP SPI(s): 0x00001234",
                 "expected": "Dynamic SA Rekeying & SPI Rotation",
                 "recommendation": "Ensure frequent Security Association rekeying to prevent passive netflow session correlation.",
                 "status": null,
-                "evidence_references": [
-                    {
-                        "frame_number": 1,
-                        "timestamp": 1791485189.231312,
-                        "protocol": "IKE",
-                        "capture_byte_offset": 82,
-                        "capture_byte_length": 60,
-                        "evidence_scope": "related packet context; this reference does not prove hidden or unobserved configuration"
-                    }
-                ],
-                "evidence_status": "referenced"
+                "evidence_references": [],
+                "evidence_status": "unavailable"
             }
         ],
         "recommendations": [
             {
-                "finding_id": "IPSEC-ENC-001",
-                "category": "Encryption",
-                "severity": "HIGH",
-                "current_configuration": "3DES",
-                "expected_configuration": "Approved encryption (AES-256-GCM, AES-128-GCM, AES-256-CBC, ENCR_AES_GCM_16, ENCR_AES_CBC)",
-                "reason": "Weak or forbidden encryption algorithm detected",
-                "recommended_action": "Reconfigure IPsec proposals to use strong encryption algorithms such as AES-256-GCM."
-            },
-            {
                 "finding_id": "IPSEC-META-003",
                 "category": "Metadata Exposure",
                 "severity": "LOW",
-                "current_configuration": "Observable ESP SPI(s): 0x00001000",
+                "current_configuration": "Observable ESP SPI(s): 0x00001234",
                 "expected_configuration": "Dynamic SA Rekeying & SPI Rotation",
                 "reason": "Static SPI Header Linkability / Session Tracking Risk",
                 "recommended_action": "Ensure frequent Security Association rekeying to prevent passive netflow session correlation."
@@ -264,10 +191,10 @@
                 "summary": "No unencrypted identity payloads exposed in packet headers."
             },
             "spi_correlation": {
-                "initiator_spi": "1122334455667788",
+                "initiator_spi": "0000000000000000",
                 "responder_spi": "0000000000000000",
                 "esp_spis": [
-                    "0x00001000"
+                    "0x00001234"
                 ],
                 "total_unique_spis": 2,
                 "spi_linkability_risk": "MEDIUM",
@@ -275,7 +202,7 @@
                 "description": "ESP SPI values are transmitted in cleartext (RFC 4303). Network eavesdroppers can track tunnel session flows across network topological changes using SPI headers."
             },
             "transport_mode_exposure": {
-                "encapsulation_mode": "Tunnel",
+                "encapsulation_mode": "Transport (inferred)",
                 "inner_header_exposed": false,
                 "exposed_metadata_bytes_per_pkt": 0,
                 "exposure_risk": "LOW",
@@ -287,7 +214,7 @@
                     "category": "Metadata Exposure",
                     "severity": "LOW",
                     "title": "Static SPI Header Linkability / Session Tracking Risk",
-                    "observed": "Observable ESP SPI(s): 0x00001000",
+                    "observed": "Observable ESP SPI(s): 0x00001234",
                     "expected": "Dynamic SA Rekeying & SPI Rotation",
                     "recommendation": "Ensure frequent Security Association rekeying to prevent passive netflow session correlation."
                 }
@@ -297,21 +224,21 @@
     "explainability": [
         {
             "parameter": "IKE Protocol Version",
-            "observed_value": "IKEv2 (RFC 7296)",
-            "status": "SECURE",
+            "observed_value": "IKE / IPsec",
+            "status": "INFO",
             "icon": "",
-            "title": "Modern IKEv2 Protocol Engine (RFC 7296)",
-            "plain_english_summary": "Manages your VPN connection lifecycle with high speed, instant auto-reconnect, and seamless network mobility across Wi-Fi and 5G.",
-            "detailed_explanation": "IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular - older VPNs would freeze or crash, forcing you to log in again. IKEv2 natively uses MOBIKE (RFC 4555) technology to instantly shift your encrypted session between network connections without dropping active video calls or web apps. Additionally, it uses a streamlined 4-message exchange (IKE_SA_INIT & IKE_AUTH) with built-in cookie challenges to protect your server against hacker overload (DoS SYN-flood) attacks."
+            "title": "Tunnel Negotiation Protocol (UNKNOWN)",
+            "plain_english_summary": "Manages initial identity verification and security negotiations between your device and the VPN server.",
+            "detailed_explanation": "Sets up the initial secure channel between your computer and the remote organizational gateway before sensitive data starts flowing."
         },
         {
             "parameter": "Encryption Cipher Algorithm",
-            "observed_value": "3DES-CBC (Triple-DES)",
-            "status": "OBSOLETE",
+            "observed_value": "Standard Cipher",
+            "status": "INFO",
             "icon": "",
-            "title": "Obsolete 3DES-CBC Cipher (Vulnerable to Sweet32 Collision Attacks)",
-            "plain_english_summary": "Obsolete 1990s 64-bit encryption block cipher that modern high-speed computers can break through data collision attacks.",
-            "detailed_explanation": "Triple-DES scrambles data by running the 1970s DES algorithm 3 times in sequence. However, because it uses tiny 64-bit blocks of data, modern security research (Sweet32 attack / CVE-2016-2183) proves that an eavesdropper capturing around 32GB of high-speed VPN traffic can mathematically break the encryption and recover secret plaintext data. Formally retired and forbidden by NIST SP 800-131A guidelines."
+            "title": "Data Encryption Cipher (UNKNOWN)",
+            "plain_english_summary": "Cryptographic algorithm responsible for obscuring readable data across public networks.",
+            "detailed_explanation": "Converts plain text into unreadable ciphertext using UNKNOWN to ensure privacy."
         },
         {
             "parameter": "Diffie-Hellman Key Exchange",
@@ -332,22 +259,13 @@
             "detailed_explanation": "Without PFS, session keys for data traffic depend directly on the main initial master key of the VPN tunnel. If an adversary records encrypted network traffic today and later compromises the VPN gateway's private key, they can retroactively decrypt all historical captured data."
         },
         {
-            "parameter": "IPsec Encapsulation Mode",
-            "observed_value": "Tunnel Mode (Outer IP Wrapping)",
-            "status": "SECURE",
-            "icon": "",
-            "title": "IPsec Tunnel Mode Encapsulation (Complete Outer IP Envelope)",
-            "plain_english_summary": "Encloses your entire original IP packet - including private source and destination IP addresses - inside a brand-new encrypted outer IP envelope.",
-            "detailed_explanation": "Think of Transport Mode as sending a postcard where the message is written in code, but the sender and recipient home addresses are clearly visible on the outside. Tunnel Mode is like placing that entire postcard inside a thick, opaque courier envelope addressed only between two secure VPN gateways. Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture - they only see encrypted traffic traveling between the two public gateway endpoints."
-        },
-        {
             "parameter": "AI Encrypted Traffic Intelligence",
-            "observed_value": "VPN-FT (60.1% confidence)",
+            "observed_value": "VPN-BROWSING (33.3% confidence)",
             "status": "SECURE",
             "icon": "",
-            "title": "AI Behavioral Pattern Recognition (VPN-FT Application)",
-            "plain_english_summary": "Machine Learning identified the exact application activity ('VPN-FT') inside the VPN tunnel using behavioral traffic patterns without breaking encryption.",
-            "detailed_explanation": "Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics - such as packet size variations, transmission timing intervals, and bandwidth burst ratios. Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as 'VPN-FT' with 60.1% statistical confidence, zero decryption required."
+            "title": "AI Behavioral Pattern Recognition (VPN-BROWSING Application)",
+            "plain_english_summary": "Machine Learning identified the exact application activity ('VPN-BROWSING') inside the VPN tunnel using behavioral traffic patterns without breaking encryption.",
+            "detailed_explanation": "Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics - such as packet size variations, transmission timing intervals, and bandwidth burst ratios. Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as 'VPN-BROWSING' with 33.3% statistical confidence, zero decryption required."
         },
         {
             "parameter": "Observable Metadata Exposure",
@@ -364,25 +282,25 @@
         "drift_status": "DRIFTED",
         "drift_count": 1,
         "total_fields_evaluated": 7,
-        "variance_score": 30,
+        "variance_score": 10,
         "field_diffs": [
             {
                 "field_id": "ike_version",
                 "field_name": "IKE Protocol Version",
                 "baseline": "IKEv2",
-                "observed": "IKEv2",
-                "status": "SYNCHRONIZED",
-                "severity": "NONE",
-                "impact": "Observed value matches the selected reference baseline."
+                "observed": "unknown",
+                "status": "UNVERIFIED",
+                "severity": "INFO",
+                "impact": "The observed capture does not reveal this configuration value."
             },
             {
                 "field_id": "encryption",
                 "field_name": "Encryption Cipher Algorithm",
                 "baseline": "AES-256-GCM",
-                "observed": "3DES",
-                "status": "DRIFTED",
-                "severity": "HIGH",
-                "impact": "Observed value differs from the selected reference baseline."
+                "observed": "unknown",
+                "status": "UNVERIFIED",
+                "severity": "INFO",
+                "impact": "The observed capture does not reveal this configuration value."
             },
             {
                 "field_id": "key_length",
@@ -415,10 +333,10 @@
                 "field_id": "mode",
                 "field_name": "IPsec Encapsulation Mode",
                 "baseline": "Tunnel",
-                "observed": "Tunnel",
-                "status": "SYNCHRONIZED",
-                "severity": "NONE",
-                "impact": "Observed value matches the selected reference baseline."
+                "observed": "Transport (inferred)",
+                "status": "DRIFTED",
+                "severity": "LOW",
+                "impact": "Observed value differs from the selected reference baseline."
             },
             {
                 "field_id": "integrity",
@@ -434,17 +352,17 @@
     },
     "policy_as_code": {
         "total_rules": 7,
-        "passed": 2,
-        "warnings": 4,
-        "failed": 1,
-        "compliance_score": 66,
+        "passed": 0,
+        "warnings": 7,
+        "failed": 0,
+        "compliance_score": null,
         "rule_results": [
             {
                 "rule_id": "POL-01",
                 "name": "Protocol Version Modernity",
                 "category": "Protocol Baseline",
-                "status": "PASS",
-                "observed": "IKEv2",
+                "status": "WARNING",
+                "observed": "unknown",
                 "requirement": "IKEv2",
                 "description": "Unknown values are unverified; known values are checked against the active policy."
             },
@@ -452,8 +370,8 @@
                 "rule_id": "POL-02",
                 "name": "Encryption Cipher Strength",
                 "category": "Confidentiality",
-                "status": "FAIL",
-                "observed": "3DES",
+                "status": "WARNING",
+                "observed": "unknown",
                 "requirement": "AES-256-GCM, AES-128-GCM, AES-256-CBC, ENCR_AES_GCM_16, ENCR_AES_CBC",
                 "description": "Unknown values are unverified; approved and forbidden algorithms come from the active policy."
             },
@@ -488,8 +406,8 @@
                 "rule_id": "POL-06",
                 "name": "Encapsulation Mode",
                 "category": "Network Topology",
-                "status": "PASS",
-                "observed": "Tunnel",
+                "status": "WARNING",
+                "observed": "Transport (inferred)",
                 "requirement": "Tunnel",
                 "description": "An absent mode cannot be treated as compliant."
             },
@@ -549,14 +467,13 @@
             {
                 "control": "Symmetric Cipher Quantum Margin",
                 "status": "UNKNOWN",
-                "observed": "3DES",
-                "key_length_bits": null,
-                "impact": "The key length cannot be established from the observed cipher name."
+                "observed": "unknown",
+                "impact": "The symmetric cipher is not observable."
             },
             {
                 "control": "Negotiated Post-Quantum Key Exchange",
                 "status": "NOT_VERIFIED",
-                "observed": "IKEv2",
+                "observed": "unknown",
                 "impact": "IKE version alone does not prove that a hybrid or post-quantum key exchange was configured or negotiated."
             },
             {
@@ -574,42 +491,22 @@
     "crypto_bom": {
         "bom_format": "PrivComm Crypto Bill of Materials",
         "schema_version": "privcomm.cbom.v1",
-        "generated_at": "2026-10-08T18:46:33.280243+00:00",
+        "generated_at": "2026-10-08T18:46:28.787699+00:00",
         "capture": {
-            "sha256": "3e4cf84d6ae0a3c370962bd9a987198c9597a06cac2b2c7717cda452f46d3f35"
+            "sha256": "a5261909fb10c55f5f8a6b0129a81219145aed424791bbf2f2f83ab44391b851"
         },
-        "components": [
+        "components": [],
+        "unresolved": [
             {
-                "type": "protocol",
-                "name": "IKEv2",
-                "source_field": "ike_version",
-                "description": "IKE protocol",
-                "evidence": [
-                    {
-                        "frame_number": 1,
-                        "capture_byte_offset": 99,
-                        "capture_byte_length": 1
-                    }
-                ],
-                "evidence_status": "observed"
+                "field": "ike_version",
+                "status": "unknown",
+                "reason": "No value was available in the analyzed configuration or capture."
             },
             {
-                "type": "symmetric-encryption",
-                "name": "3DES",
-                "source_field": "encryption",
-                "description": "Encryption algorithm",
-                "evidence": [
-                    {
-                        "frame_number": 1,
-                        "capture_byte_offset": 82,
-                        "capture_byte_length": 60,
-                        "evidence_scope": "IKE message; algorithm identified from decoded proposal"
-                    }
-                ],
-                "evidence_status": "observed"
-            }
-        ],
-        "unresolved": [
+                "field": "encryption",
+                "status": "unknown",
+                "reason": "No value was available in the analyzed configuration or capture."
+            },
             {
                 "field": "integrity",
                 "status": "unknown",
@@ -651,12 +548,12 @@
     ],
     "data_provenance": {
         "ipsec_detected": "OBSERVED",
-        "ike_version": "PARSED",
+        "ike_version": "UNKNOWN",
         "esp_detected": "OBSERVED",
         "ah_detected": "OBSERVED",
         "mode": "INFERRED",
         "mode_confidence": "INFERRED",
-        "encryption": "PARSED",
+        "encryption": "UNKNOWN",
         "integrity": "UNKNOWN",
         "dh_group": "UNKNOWN",
         "pfs": "UNKNOWN",
