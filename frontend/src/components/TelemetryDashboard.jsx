@@ -350,7 +350,7 @@ export default function TelemetryDashboard({ externalAnalysis, onNavigateToTestb
       icon: '',
       title: `IPsec ${curr.mode || 'Tunnel'} Mode Encapsulation`,
       status: curr.mode === 'Transport' ? 'CAUTION' : 'SECURE',
-      plain_english_summary: 'Encloses your entire original IP packet—including private source and destination IP addresses—inside a brand-new encrypted outer IP envelope.',
+      plain_english_summary: 'Encloses your entire original IP packet - including private source and destination IP addresses - inside a brand-new encrypted outer IP envelope.',
       detailed_explanation: 'Like placing a coded postcard inside a thick, sealed courier envelope addressed between two secure VPN gateways. Eavesdroppers on public networks cannot inspect internal company IP addresses, device names, or private network topology.'
     },
     {
@@ -1298,7 +1298,7 @@ export default function TelemetryDashboard({ externalAnalysis, onNavigateToTestb
           >
             <div className="threat-matrix-dialog-header">
               <div>
-                <div className="section-kicker">SEC.03 — THREAT MODEL</div>
+                <div className="section-kicker">SEC.03  -  THREAT MODEL</div>
                 <h2 id="threat-matrix-dialog-title">Threat Matrix Details</h2>
               </div>
               <button

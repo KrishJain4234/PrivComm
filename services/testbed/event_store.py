@@ -1,7 +1,7 @@
 """
 Transient in-memory event store for live testbed execution events.
 
-Events are NOT persisted to disk or Supabase — they exist only while
+Events are NOT persisted to disk or Supabase  -  they exist only while
 the process is running and are consumed by the frontend via polling.
 Each job maintains a capped ring-buffer (max 200 events) so long-running
 traffic profiles never cause unbounded memory growth.

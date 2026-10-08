@@ -4,10 +4,10 @@
 Every security parameter carries a provenance tier that records *how* the value
 was obtained.  This makes false-pass findings structurally impossible:
 
-    OBSERVED  — value was confirmed directly from wire traffic / active probe
-    PARSED    — value was extracted from a static configuration file
-    INFERRED  — value was produced by an ML model or heuristic (confidence attached)
-    UNKNOWN   — value could not be determined; rule emits CANNOT_ASSESS
+    OBSERVED   -  value was confirmed directly from wire traffic / active probe
+    PARSED     -  value was extracted from a static configuration file
+    INFERRED   -  value was produced by an ML model or heuristic (confidence attached)
+    UNKNOWN    -  value could not be determined; rule emits CANNOT_ASSESS
 
 Design principles:
   - Rules that receive an UNKNOWN fact MUST NOT emit a PASS verdict.
@@ -49,7 +49,7 @@ def weaker_tier(a: ProvenanceTier, b: ProvenanceTier) -> ProvenanceTier:
 
 
 # ---------------------------------------------------------------------------
-# Tagged fact — a value plus its provenance
+# Tagged fact  -  a value plus its provenance
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -140,7 +140,7 @@ class ProvenancedFact:
 
 
 # ---------------------------------------------------------------------------
-# Provenance context — a dict of named facts for one analysis run
+# Provenance context  -  a dict of named facts for one analysis run
 # ---------------------------------------------------------------------------
 
 @dataclass
@@ -157,7 +157,7 @@ class ProvenanceContext:
 
         fact = ctx.get("dh_group")
         if not fact.is_assessable:
-            # emit CANNOT_ASSESS — do NOT emit PASS
+            # emit CANNOT_ASSESS  -  do NOT emit PASS
             ...
     """
 

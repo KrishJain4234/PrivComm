@@ -122,7 +122,7 @@ class TestbedOrchestrator:
 
             emit("system", "orchestrator", "status",
                  phase="CONFIG_GENERATION",
-                 output=f"Configuration synthesis complete — IKE: {scenario.ike_version}, "
+                 output=f"Configuration synthesis complete  -  IKE: {scenario.ike_version}, "
                         f"Enc: {scenario.encryption}, DH: {scenario.dh_group}",
                  status="success")
 
@@ -204,7 +204,7 @@ class TestbedOrchestrator:
 
             emit("observer", topology.observer.host, "status",
                  phase="OBSERVER_CAPTURE_START",
-                 output=f"Wire capture active — recording IPsec traffic on {topology.observer.interface}",
+                 output=f"Wire capture active  -  recording IPsec traffic on {topology.observer.interface}",
                  status="running")
 
             # ── Phase 5: Tunnel Negotiation ──────────────────────────────────
@@ -299,7 +299,7 @@ class TestbedOrchestrator:
 
             emit("initiator", topology.initiator.host, "status",
                  phase="TRAFFIC_INJECTION",
-                 output=f"Traffic injection complete — {scenario.packet_count} packets transmitted",
+                 output=f"Traffic injection complete  -  {scenario.packet_count} packets transmitted",
                  status="success")
 
             emit("observer", topology.observer.host, "status",
@@ -315,7 +315,7 @@ class TestbedOrchestrator:
 
             emit("observer", topology.observer.host, "status",
                  phase="CAPTURE_RETRIEVAL",
-                 output="Stopping tcpdump — downloading PCAP artifact...",
+                 output="Stopping tcpdump  -  downloading PCAP artifact...",
                  status="running")
 
             pcap_url = await CaptureManager.stop_and_retrieve_capture(
@@ -361,7 +361,7 @@ class TestbedOrchestrator:
 
             emit("system", "orchestrator", "status",
                  phase="AI_ANALYSIS",
-                 output=f"Analysis complete — Risk: {result_dict.get('security_assessment', {}).get('risk_level', 'N/A')}, "
+                 output=f"Analysis complete  -  Risk: {result_dict.get('security_assessment', {}).get('risk_level', 'N/A')}, "
                         f"Compliance Score: {result_dict.get('compliance_score', 'N/A')}",
                  status="success")
 
@@ -414,14 +414,14 @@ class TestbedOrchestrator:
         Build the shell command that injects synthetic traffic into the VPN tunnel.
 
         Supported traffic profiles:
-          ICMP_ECHO    — ping (ICMP / ICMPv6)
-          HTTP_GET     — curl HTTP request (web browsing)
-          IPERF_BURST  — iperf3 TCP throughput (file transfer)
-          VOIP_RTP     — iperf3 UDP small-packet stream (VoIP / WhatsApp voice)
-          VIDEO_STREAM — iperf3 UDP large-packet high-rate stream (video streaming)
-          EMAIL_SMTP   — netcat SMTP banner exchange (email)
-          DNS_BURST    — dig/nslookup rapid DNS queries (DNS lookups)
-          P2P_SIM      — bidirectional iperf3 UDP (P2P / BitTorrent simulation)
+          ICMP_ECHO     -  ping (ICMP / ICMPv6)
+          HTTP_GET      -  curl HTTP request (web browsing)
+          IPERF_BURST   -  iperf3 TCP throughput (file transfer)
+          VOIP_RTP      -  iperf3 UDP small-packet stream (VoIP / WhatsApp voice)
+          VIDEO_STREAM  -  iperf3 UDP large-packet high-rate stream (video streaming)
+          EMAIL_SMTP    -  netcat SMTP banner exchange (email)
+          DNS_BURST     -  dig/nslookup rapid DNS queries (DNS lookups)
+          P2P_SIM       -  bidirectional iperf3 UDP (P2P / BitTorrent simulation)
         """
         host = topology.responder.host
         dur = scenario.traffic_duration_sec

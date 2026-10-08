@@ -49,7 +49,7 @@ async def lifespan(app: FastAPI):
 
 # FastAPI App Instance for Privcomm Web Platform
 app = FastAPI(
-    title="Privcomm — AI-Assisted IPsec VPN Security Intelligence Platform",
+    title="Privcomm  -  AI-Assisted IPsec VPN Security Intelligence Platform",
     description="Full IPsec VPN protocol dissection, XGBoost traffic classification, and compliance audit engine.",
     version="2.0",
     lifespan=lifespan

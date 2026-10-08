@@ -116,9 +116,9 @@ function ThemedOptionSelect({ value, options, onChange, ariaLabel }) {
 }
 
 const PREVIEW_LINES = {
-  initiator: ["$ testbedctl preflight --initiator", "PREVIEW ONLY — waiting for backend deployment", "$ swanctl --list-sas"],
-  responder: ["$ testbedctl preflight --responder", "PREVIEW ONLY — waiting for backend deployment", "$ swanctl --list-sas"],
-  observer: ["$ testbedctl preflight --observer", "PREVIEW ONLY — capture has not started", "$ tcpdump --status"],
+  initiator: ["$ testbedctl preflight --initiator", "PREVIEW ONLY  -  waiting for backend deployment", "$ swanctl --list-sas"],
+  responder: ["$ testbedctl preflight --responder", "PREVIEW ONLY  -  waiting for backend deployment", "$ swanctl --list-sas"],
+  observer: ["$ testbedctl preflight --observer", "PREVIEW ONLY  -  capture has not started", "$ tcpdump --status"],
 };
 
 const STAGE_LINES = {
@@ -492,9 +492,9 @@ function TunnelViz({ stage, isRunning, packetPos }) {
           <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "0.64rem", color: tunnelActive ? (trafficActive ? "#3fb950" : "#58a6ff") : "#484f58" }}>
             {!isRunning && !tunnelActive && "Tunnel Status: Idle"}
             {isRunning && !tunnelActive && `Tunnel Status: Provisioning [${stage || "..."}]`}
-            {tunnelActive && !trafficActive && "Tunnel Status: ESTABLISHED — IKEv2 + ESP SA active"}
-            {trafficActive && !isDone && "Tunnel Status: ACTIVE — Encrypted traffic flowing >>>"}
-            {isDone && "Tunnel Status: COMPLETE — AI analysis running"}
+            {tunnelActive && !trafficActive && "Tunnel Status: ESTABLISHED  -  IKEv2 + ESP SA active"}
+            {trafficActive && !isDone && "Tunnel Status: ACTIVE  -  Encrypted traffic flowing >>>"}
+            {isDone && "Tunnel Status: COMPLETE  -  AI analysis running"}
           </div>
         </div>
 
@@ -688,7 +688,7 @@ function ResultCard({ job, onNavigateToAnalysis }) {
   return (
     <div style={{ background: "var(--bg-card)", border: "1px solid var(--status-success-border)", borderRadius: "10px", padding: "18px 22px", marginTop: "12px" }}>
       <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "0.76rem", fontWeight: 700, color: "var(--status-success)", marginBottom: "14px", letterSpacing: "0.06em" }}>
-        {isDemo ? "BROWSER DEMO COMPLETE — NO TESTBED ANALYSIS RAN" : "ANALYSIS COMPLETED SUCCESSFULLY"}
+        {isDemo ? "BROWSER DEMO COMPLETE  -  NO TESTBED ANALYSIS RAN" : "ANALYSIS COMPLETED SUCCESSFULLY"}
       </div>
       {isDemo && (
         <p role="status" style={{ color: "var(--text-secondary)", fontSize: "0.82rem", lineHeight: 1.5, margin: "0 0 14px" }}>
@@ -1257,7 +1257,7 @@ export default function TestbedTab({ onNavigateToAnalysis, onNavigateToLive, onL
                   border: `1px solid ${isOnline ? "var(--status-success-border)" : nodeState === "OFFLINE" ? "var(--status-danger-border)" : "var(--border-subtle)"}`,
                   color: isOnline ? "var(--status-success)" : nodeState === "OFFLINE" ? "var(--status-danger)" : "var(--text-tertiary)"
                 }}
-                title={probeInfo?.details || `${n.label} at ${n.host} — status unverified`}
+                title={probeInfo?.details || `${n.label} at ${n.host}  -  status unverified`}
               >
                 <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: isOnline ? "var(--status-success)" : nodeState === "OFFLINE" ? "var(--status-danger)" : "var(--text-tertiary)" }} />
                 <span>{n.label}</span>
@@ -1439,12 +1439,12 @@ export default function TestbedTab({ onNavigateToAnalysis, onNavigateToLive, onL
             </button>
           </div>
 
-          {/* 3 Terminals — middle column contains TunnelViz on top */}
+          {/* 3 Terminals  -  middle column contains TunnelViz on top */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "14px", height: "580px", overflow: "hidden" }}>
-            {/* SENDER — full height */}
+            {/* SENDER  -  full height */}
             <div style={{ minHeight: 0, overflow: "hidden", display: "flex" }}>
               <LinuxTerminal
-                title={activeJob?.demo ? "SENDER (SIMULATED — NO VM)" : "SENDER (VM1 — Initiator)"}
+                title={activeJob?.demo ? "SENDER (SIMULATED  -  NO VM)" : "SENDER (VM1  -  Initiator)"}
                 ip={topology.initiator_ip}
                 role="initiator"
                 lines={senderLines}
@@ -1453,18 +1453,18 @@ export default function TestbedTab({ onNavigateToAnalysis, onNavigateToLive, onL
               />
             </div>
 
-            {/* OBSERVER — top: TunnelViz, bottom: green terminal */}
+            {/* OBSERVER  -  top: TunnelViz, bottom: green terminal */}
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", minHeight: 0, overflow: "hidden" }}>
-              {/* Top half — Tunnel Visualizer */}
+              {/* Top half  -  Tunnel Visualizer */}
               <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
                 {currentStage && <StageBar currentStage={currentStage} />}
                 <TunnelViz stage={currentStage} isRunning={isRunning} packetPos={packetPos} />
               </div>
 
-              {/* Bottom half — green Observer terminal */}
+              {/* Bottom half  -  green Observer terminal */}
               <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "flex" }}>
                 <LinuxTerminal
-                  title={activeJob?.demo ? "OBSERVER (SIMULATED — NO PACKET CAPTURE)" : "OBSERVER (VM3 — Packet Capture)"}
+                  title={activeJob?.demo ? "OBSERVER (SIMULATED  -  NO PACKET CAPTURE)" : "OBSERVER (VM3  -  Packet Capture)"}
                   ip={topology.observer_ip}
                   role="observer"
                   lines={observerLines}
@@ -1475,10 +1475,10 @@ export default function TestbedTab({ onNavigateToAnalysis, onNavigateToLive, onL
               </div>
             </div>
 
-            {/* RECEIVER — full height */}
+            {/* RECEIVER  -  full height */}
             <div style={{ minHeight: 0, overflow: "hidden", display: "flex" }}>
               <LinuxTerminal
-                title={activeJob?.demo ? "RECEIVER (SIMULATED — NO VM)" : "RECEIVER (VM2 — Responder)"}
+                title={activeJob?.demo ? "RECEIVER (SIMULATED  -  NO VM)" : "RECEIVER (VM2  -  Responder)"}
                 ip={topology.responder_ip}
                 role="responder"
                 lines={receiverLines}

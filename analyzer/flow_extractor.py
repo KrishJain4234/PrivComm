@@ -35,7 +35,7 @@ def extract_flow_features_scapy(packets: List[Any]) -> Dict[str, float]:
         sz = len(pkt)
         sizes.append(sz)
 
-        # Determine source address — supports both IPv4 and IPv6
+        # Determine source address  -  supports both IPv4 and IPv6
         if pkt.haslayer(IP):
             src = pkt[IP].src
             if first_src is None:

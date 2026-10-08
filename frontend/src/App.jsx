@@ -119,10 +119,10 @@ export default function App() {
           <div className="footer-inner">
             <div className="footer-brand">
               <div className="footer-brand-line">
-                <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.9rem' }}>Privcomm</span>
-                <span style={{ color: 'var(--text-muted)' }}>&mdash;</span>
-                <span style={{ color: 'var(--text-tertiary)', fontSize: '0.82rem' }}>AI-Assisted IPsec VPN Security Intelligence</span>
+                <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.9rem' }}>Privcomm:</span>
+                <span style={{ color: 'var(--text-tertiary)', fontSize: '0.82rem' }}>Infer, Analyze, and Protect Your IPsec VPN</span>
               </div>
+              <div className="footer-credit">Developed by Team SatyaSetu26</div>
               <div className="footer-demo">
                 <div className="footer-demo-heading">Prototype demonstration</div>
                 <div className="footer-video-frame">

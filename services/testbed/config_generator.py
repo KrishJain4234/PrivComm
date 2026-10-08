@@ -134,11 +134,11 @@ class StrongSwanConfigGenerator:
             remote_ts = f"{remote_ip}/32"
 
         pfs_comment = "# PFS enabled: DH group included in ESP proposal" if scenario.pfs \
-            else "# PFS disabled: no DH group in ESP proposal — keys derived from IKE SA"
+            else "# PFS disabled: no DH group in ESP proposal  -  keys derived from IKE SA"
         esp_comment = "# ESP enabled" if esp_enabled else "# ESP disabled: pass policy (no encrypted CHILD_SA)"
         esp_line = f"                esp_proposals = {esp_prop}" if esp_enabled else "                # esp_proposals omitted because ESP is disabled"
 
-        conf = f"""# strongSwan swanctl.conf — Generated for {scenario.name}
+        conf = f"""# strongSwan swanctl.conf  -  Generated for {scenario.name}
 # Role: {"Initiator (VM1)" if is_initiator else "Responder (VM2)"}
 # IPsec Mode: {mode.capitalize()} | IP Version: {scenario.ip_version}
 # {pfs_comment}
@@ -213,7 +213,7 @@ secrets {{
         else:
             subnet_lines = f"    leftsubnet={left_ip}/32\n    rightsubnet={right_ip}/32"
 
-        ipsec_conf = f"""# strongSwan ipsec.conf — Scenario: {scenario.name}
+        ipsec_conf = f"""# strongSwan ipsec.conf  -  Scenario: {scenario.name}
 # IPsec Mode: {mode.capitalize()} | IP Version: {scenario.ip_version} | PFS: {"Enabled" if scenario.pfs else "Disabled"}
 config setup
     charondebug="ike 2, knl 2, cfg 2, net 2, esp 2"

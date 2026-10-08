@@ -846,7 +846,7 @@ conn Cloud-to-Datacenter
               color: 'var(--text-primary)',
               lineHeight: 1.5,
             }}>
-              <strong style={{ color: '#f59e0b' }}>SIMULATED DEMO RESULT — NOT CAPTURE ANALYSIS</strong>
+              <strong style={{ color: '#f59e0b' }}>SIMULATED DEMO RESULT  -  NOT CAPTURE ANALYSIS</strong>
               <div>{analysisResult.data_provenance} Do not use these illustrative values as security evidence or operational guidance.</div>
             </div>
           )}
@@ -924,7 +924,7 @@ conn Cloud-to-Datacenter
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent-cyan)' }}>
                   <Sparkles size={18} />
                   <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                    Hardened Configuration Template — Review Before Use ({analysisResult.vendor || 'Custom'})
+                    Hardened Configuration Template  -  Review Before Use ({analysisResult.vendor || 'Custom'})
                   </h4>
                 </div>
                 <button

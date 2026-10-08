@@ -26,14 +26,14 @@ def synthesize_ipsec_config(ike_info: Dict[str, Any], esp_info: Dict[str, Any]) 
     if "GCM" in str(enc) or "CCM" in str(enc):
         integrity = "AEAD"
 
-    # IP version — taken from the ESP/AH layer parser which inspects actual packet headers.
+    # IP version  -  taken from the ESP/AH layer parser which inspects actual packet headers.
     # This reflects what is actually on the wire (IPv4, IPv6, or Dual-Stack).
     detected_ip_version = esp_info.get("detected_ip_version", "unknown")
     if detected_ip_version == "unknown" and ike_info.get("ike_detected"):
         # IKE runs over UDP; if we have IKE but no ESP/AH yet, ip_version stays unknown
         detected_ip_version = "unknown"
 
-    # Source/Destination IPs — extracted from IKE Identity payloads where available.
+    # Source/Destination IPs  -  extracted from IKE Identity payloads where available.
     # These are the IKE endpoint IPs, not the inner tunnel subnets.
     source_ip = ike_info.get("initiator_ip", None)
     destination_ip = ike_info.get("responder_ip", None)

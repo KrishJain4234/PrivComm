@@ -371,19 +371,19 @@ def _simulated_output(command: str, vm_role: str) -> list:
             f"[sim:{vm_role}] received IKE_SA_INIT response (PRF/integrity suite matched)",
             f"[sim:{vm_role}] [Integrity Layer] Mutual proposal checksum validated: MATCH",
             f"[sim:{vm_role}] IKE_AUTH request sent",
-            f"[sim:{vm_role}] IKE_AUTH response received — authentication OK",
+            f"[sim:{vm_role}] IKE_AUTH response received  -  authentication OK",
             f"[sim:{vm_role}] CHILD_SA net-tunnel established (ESP integrity verified)",
-            f"[sim:{vm_role}] IKE_SA net-tunnel[1] established — tunnel UP",
+            f"[sim:{vm_role}] IKE_SA net-tunnel[1] established  -  tunnel UP",
         ]
     elif "tcpdump" in cmd_lower:
         return [
-            f"[sim:{vm_role}] Starting tcpdump on eth1 — filter: udp port 500 or 4500 or proto 50",
-            f"[sim:{vm_role}] Capture running, PID 1234 — writing to /tmp/capture.pcap",
+            f"[sim:{vm_role}] Starting tcpdump on eth1  -  filter: udp port 500 or 4500 or proto 50",
+            f"[sim:{vm_role}] Capture running, PID 1234  -  writing to /tmp/capture.pcap",
         ]
     elif "pkill" in cmd_lower:
         return [
             f"[sim:{vm_role}] Sending SIGTERM to tcpdump...",
-            f"[sim:{vm_role}] Capture stopped — flushing buffer",
+            f"[sim:{vm_role}] Capture stopped  -  flushing buffer",
         ]
     elif "ping" in cmd_lower or "ping6" in cmd_lower:
         return [

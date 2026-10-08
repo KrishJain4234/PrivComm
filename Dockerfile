@@ -1,4 +1,4 @@
-# Privcomm — multi-stage image (Vite SPA + FastAPI/Uvicorn)
+# Privcomm  -  multi-stage image (Vite SPA + FastAPI/Uvicorn)
 
 # -----------------------------------------------------------------------------
 # Stage 1: Frontend builder

@@ -50,7 +50,7 @@ def generate_plain_english_explanations(
             "title": "Modern IKEv2 Protocol Engine (RFC 7296)",
             "plain_english_summary": "Manages your VPN connection lifecycle with high speed, instant auto-reconnect, and seamless network mobility across Wi-Fi and 5G.",
             "detailed_explanation": (
-                "IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular—older VPNs would freeze or crash, forcing you to log in again. "
+                "IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular - older VPNs would freeze or crash, forcing you to log in again. "
                 "IKEv2 natively uses MOBIKE (RFC 4555) technology to instantly shift your encrypted session between network connections without dropping active video calls or web apps. "
                 "Additionally, it uses a streamlined 4-message exchange (IKE_SA_INIT & IKE_AUTH) with built-in cookie challenges to protect your server against hacker overload (DoS SYN-flood) attacks."
             )
@@ -137,7 +137,7 @@ def generate_plain_english_explanations(
             "plain_english_summary": "Strong 256-bit data scrambling that links data blocks together, requiring a separate hashing step to catch packet tampering.",
             "detailed_explanation": (
                 "AES-256-CBC encrypts data in 128-bit chunks by chaining each chunk to the previous one (RFC 3602). "
-                "While virtually impossible to crack by brute force, CBC mode only hides your data—it does not naturally check if someone modified the message in transit. "
+                "While virtually impossible to crack by brute force, CBC mode only hides your data - it does not naturally check if someone modified the message in transit. "
                 "Therefore, it must be paired with an external hash algorithm (like HMAC-SHA2-256) to prevent tampering."
             )
         })
@@ -187,7 +187,7 @@ def generate_plain_english_explanations(
             "status": "OBSOLETE",
             "icon": "",
             "title": "CRITICAL EXPOSURE: NULL Encryption (Raw Plaintext Transmitted)",
-            "plain_english_summary": "CRITICAL RISK: Payload encryption is completely disabled—all data is transmitted in readable plain text.",
+            "plain_english_summary": "CRITICAL RISK: Payload encryption is completely disabled - all data is transmitted in readable plain text.",
             "detailed_explanation": (
                 "NULL encryption (RFC 2410) leaves data unencrypted. "
                 "Any hacker or eavesdropper on the network path can perform passive wiretapping to read all transmitted passwords, business documents, and credentials."
@@ -221,7 +221,7 @@ def generate_plain_english_explanations(
             "detailed_explanation": (
                 "Imagine two people in a room full of eavesdroppers who want to agree on a secret color. They can publicly mix base colors in a specific mathematical way so that both end up with the exact same secret color mixture, but anyone watching from the outside can never work out what the secret final color is. "
                 "Diffie-Hellman Group 19 uses advanced Elliptic Curve mathematics (NIST P-256 / FIPS 186-4). "
-                "It provides 128 bits of high-strength symmetric security using lightweight 256-bit key math—delivering over 10x faster connection speeds and drastically lower CPU battery consumption compared to legacy 2048-bit prime number calculations."
+                "It provides 128 bits of high-strength symmetric security using lightweight 256-bit key math - delivering over 10x faster connection speeds and drastically lower CPU battery consumption compared to legacy 2048-bit prime number calculations."
             )
         })
     elif dh in ["20", "ECP-384"]:
@@ -330,7 +330,7 @@ def generate_plain_english_explanations(
             "status": "WEAK",
             "icon": "",
             "title": "PFS Disabled (Retroactive Decryption Exposure)",
-            "plain_english_summary": "CRITICAL RISK: Data session keys depend on the master server key—stealing the server key allows hackers to decrypt all recorded past traffic.",
+            "plain_english_summary": "CRITICAL RISK: Data session keys depend on the master server key - stealing the server key allows hackers to decrypt all recorded past traffic.",
             "detailed_explanation": (
                 "Without PFS, session keys for data traffic depend directly on the main initial master key of the VPN tunnel. "
                 "If an adversary records encrypted network traffic today and later compromises the VPN gateway's private key, "
@@ -347,11 +347,11 @@ def generate_plain_english_explanations(
             "status": "SECURE",
             "icon": "",
             "title": "IPsec Tunnel Mode Encapsulation (Complete Outer IP Envelope)",
-            "plain_english_summary": "Encloses your entire original IP packet—including private source and destination IP addresses—inside a brand-new encrypted outer IP envelope.",
+            "plain_english_summary": "Encloses your entire original IP packet - including private source and destination IP addresses - inside a brand-new encrypted outer IP envelope.",
             "detailed_explanation": (
                 "Think of Transport Mode as sending a postcard where the message is written in code, but the sender and recipient home addresses are clearly visible on the outside. "
                 "Tunnel Mode is like placing that entire postcard inside a thick, opaque courier envelope addressed only between two secure VPN gateways. "
-                "Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture—they only see encrypted traffic traveling between the two public gateway endpoints."
+                "Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture - they only see encrypted traffic traveling between the two public gateway endpoints."
             )
         })
     elif mode == "Transport":
@@ -382,7 +382,7 @@ def generate_plain_english_explanations(
             "plain_english_summary": f"Machine Learning identified the exact application activity ('{predicted_label}') inside the VPN tunnel using behavioral traffic patterns without breaking encryption.",
             "detailed_explanation": (
                 f"Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. "
-                f"Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics—such as packet size variations, transmission timing intervals, and bandwidth burst ratios. "
+                f"Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics - such as packet size variations, transmission timing intervals, and bandwidth burst ratios. "
                 f"Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as '{predicted_label}' with {conf_pct}% statistical confidence, zero decryption required."
             )
         })

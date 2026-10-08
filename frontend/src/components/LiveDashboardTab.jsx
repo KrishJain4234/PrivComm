@@ -244,8 +244,8 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
         predictedClass: label,
         confidence: 'Observed',
         hexDump: 'Live encrypted packet metadata received from observer',
-        iv: '—',
-        icvTag: '—'
+        iv: ' - ',
+        icvTag: ' - '
       };
       setLatestPacket(packet);
       setDynamicFlows((previous) => [{
@@ -1051,7 +1051,7 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 800, color: 'var(--accent-yellow)', letterSpacing: '0.04em' }}>
                 {orchestrationMode === 'PHYSICAL_VM'
                   ? `TUNNEL NEGOTIATING... [BACKEND TESTBED${backendJobId ? ` · JOB ${backendJobId.slice(0, 8)}` : ''}]`
-                  : 'DEMO STAGES RUNNING — NO TUNNEL NEGOTIATION'}
+                  : 'DEMO STAGES RUNNING  -  NO TUNNEL NEGOTIATION'}
               </div>
               <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
                 {orchestrationMode === 'PHYSICAL_VM'

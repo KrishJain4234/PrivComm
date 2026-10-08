@@ -51,11 +51,11 @@ class ScenarioDefinition(BaseModel):
     esp_enabled: bool = True
     auth_method: str = "PSK"  # "PSK", "RSA-Cert", "EAP-MSCHAPv2"
     pre_shared_key: str = "CyberSentinelSecureKey2026!"
-    # Tunnel or Transport mode — both fully supported in config generation
+    # Tunnel or Transport mode  -  both fully supported in config generation
     ipsec_mode: str = "tunnel"  # "tunnel" or "transport"
-    # IP version of the VPN endpoints — both IPv4 and IPv6 are supported
+    # IP version of the VPN endpoints  -  both IPv4 and IPv6 are supported
     ip_version: str = "IPv4"  # "IPv4" or "IPv6"
-    # Traffic profile — controls synthetic traffic injected during the testbed run
+    # Traffic profile  -  controls synthetic traffic injected during the testbed run
     # Supported: ICMP_ECHO, HTTP_GET, IPERF_BURST, VOIP_RTP,
     #            VIDEO_STREAM, EMAIL_SMTP, DNS_BURST, P2P_SIM
     traffic_profile: str = "ICMP_ECHO"
@@ -257,7 +257,7 @@ PRESET_SCENARIOS: List[ScenarioDefinition] = [
     # ── Diverse Traffic Profiles (Tunnel / IPv4) ────────────────────────────
     ScenarioDefinition(
         id="ikev2-voip-tunnel",
-        name="IKEv2 Tunnel — VoIP / WhatsApp Voice Traffic",
+        name="IKEv2 Tunnel  -  VoIP / WhatsApp Voice Traffic",
         description="IPsec Tunnel with VoIP RTP UDP stream simulation to train and validate the XGBoost VoIP classifier. Uses AES-256-GCM for low-latency AEAD encryption.",
         ike_version="IKEv2",
         encryption="AES-256-GCM",
@@ -275,7 +275,7 @@ PRESET_SCENARIOS: List[ScenarioDefinition] = [
     ),
     ScenarioDefinition(
         id="ikev2-video-streaming",
-        name="IKEv2 Tunnel — Video Streaming Traffic",
+        name="IKEv2 Tunnel  -  Video Streaming Traffic",
         description="IPsec Tunnel with large-packet UDP stream simulating video streaming (YouTube / Netflix). High byte-rate, bursty pattern. Uses AES-256-GCM.",
         ike_version="IKEv2",
         encryption="AES-256-GCM",
@@ -293,7 +293,7 @@ PRESET_SCENARIOS: List[ScenarioDefinition] = [
     ),
     ScenarioDefinition(
         id="ikev2-email-tunnel",
-        name="IKEv2 Tunnel — Email / SMTP Traffic",
+        name="IKEv2 Tunnel  -  Email / SMTP Traffic",
         description="IPsec Tunnel with SMTP email traffic simulation. Low-rate, connection-oriented pattern. Uses AES-256-CBC + HMAC-SHA2-256.",
         ike_version="IKEv2",
         encryption="AES-256-CBC",
@@ -311,7 +311,7 @@ PRESET_SCENARIOS: List[ScenarioDefinition] = [
     ),
     ScenarioDefinition(
         id="ikev2-dns-tunnel",
-        name="IKEv2 Tunnel — DNS Query Burst Traffic",
+        name="IKEv2 Tunnel  -  DNS Query Burst Traffic",
         description="IPsec Tunnel with rapid DNS UDP query burst. Small-packet, high-rate pattern. Uses AES-256-GCM. Validates DNS fingerprinting resistance.",
         ike_version="IKEv2",
         encryption="AES-256-GCM",
@@ -329,7 +329,7 @@ PRESET_SCENARIOS: List[ScenarioDefinition] = [
     ),
     ScenarioDefinition(
         id="ikev2-p2p-tunnel",
-        name="IKEv2 Tunnel — P2P / BitTorrent Traffic Simulation",
+        name="IKEv2 Tunnel  -  P2P / BitTorrent Traffic Simulation",
         description="IPsec Tunnel with bidirectional iperf3 UDP stream simulating P2P file sharing. High bidirectional byte rate and large forward/backward IAT asymmetry.",
         ike_version="IKEv2",
         encryption="AES-256-GCM",

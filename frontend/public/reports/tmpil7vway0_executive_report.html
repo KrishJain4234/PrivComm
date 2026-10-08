@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrivComm — Executive Security & Protocol Assessment Report</title>
+    <title>PrivComm  -  Executive Security & Protocol Assessment Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -809,7 +809,7 @@
                 </div>
                 <div class="finding-body">
                     <p><strong>Plain-English Summary:</strong> Manages your VPN connection lifecycle with high speed, instant auto-reconnect, and seamless network mobility across Wi-Fi and 5G.</p>
-                    <p style="margin-top: 6px;">IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular—older VPNs would freeze or crash, forcing you to log in again. IKEv2 natively uses MOBIKE (RFC 4555) technology to instantly shift your encrypted session between network connections without dropping active video calls or web apps. Additionally, it uses a streamlined 4-message exchange (IKE_SA_INIT & IKE_AUTH) with built-in cookie challenges to protect your server against hacker overload (DoS SYN-flood) attacks.</p>
+                    <p style="margin-top: 6px;">IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular - older VPNs would freeze or crash, forcing you to log in again. IKEv2 natively uses MOBIKE (RFC 4555) technology to instantly shift your encrypted session between network connections without dropping active video calls or web apps. Additionally, it uses a streamlined 4-message exchange (IKE_SA_INIT & IKE_AUTH) with built-in cookie challenges to protect your server against hacker overload (DoS SYN-flood) attacks.</p>
                 </div>
             </div>
             
@@ -841,7 +841,7 @@
                     <span class="badge badge-medium">WEAK</span>
                 </div>
                 <div class="finding-body">
-                    <p><strong>Plain-English Summary:</strong> CRITICAL RISK: Data session keys depend on the master server key—stealing the server key allows hackers to decrypt all recorded past traffic.</p>
+                    <p><strong>Plain-English Summary:</strong> CRITICAL RISK: Data session keys depend on the master server key - stealing the server key allows hackers to decrypt all recorded past traffic.</p>
                     <p style="margin-top: 6px;">Without PFS, session keys for data traffic depend directly on the main initial master key of the VPN tunnel. If an adversary records encrypted network traffic today and later compromises the VPN gateway's private key, they can retroactively decrypt all historical captured data.</p>
                 </div>
             </div>
@@ -852,8 +852,8 @@
                     <span class="badge badge-secure">SECURE</span>
                 </div>
                 <div class="finding-body">
-                    <p><strong>Plain-English Summary:</strong> Encloses your entire original IP packet—including private source and destination IP addresses—inside a brand-new encrypted outer IP envelope.</p>
-                    <p style="margin-top: 6px;">Think of Transport Mode as sending a postcard where the message is written in code, but the sender and recipient home addresses are clearly visible on the outside. Tunnel Mode is like placing that entire postcard inside a thick, opaque courier envelope addressed only between two secure VPN gateways. Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture—they only see encrypted traffic traveling between the two public gateway endpoints.</p>
+                    <p><strong>Plain-English Summary:</strong> Encloses your entire original IP packet - including private source and destination IP addresses - inside a brand-new encrypted outer IP envelope.</p>
+                    <p style="margin-top: 6px;">Think of Transport Mode as sending a postcard where the message is written in code, but the sender and recipient home addresses are clearly visible on the outside. Tunnel Mode is like placing that entire postcard inside a thick, opaque courier envelope addressed only between two secure VPN gateways. Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture - they only see encrypted traffic traveling between the two public gateway endpoints.</p>
                 </div>
             </div>
             
@@ -864,7 +864,7 @@
                 </div>
                 <div class="finding-body">
                     <p><strong>Plain-English Summary:</strong> Machine Learning identified the exact application activity ('VPN-FT') inside the VPN tunnel using behavioral traffic patterns without breaking encryption.</p>
-                    <p style="margin-top: 6px;">Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics—such as packet size variations, transmission timing intervals, and bandwidth burst ratios. Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as 'VPN-FT' with 60.1% statistical confidence, zero decryption required.</p>
+                    <p style="margin-top: 6px;">Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics - such as packet size variations, transmission timing intervals, and bandwidth burst ratios. Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as 'VPN-FT' with 60.1% statistical confidence, zero decryption required.</p>
                 </div>
             </div>
             

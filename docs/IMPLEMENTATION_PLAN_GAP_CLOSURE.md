@@ -4,7 +4,7 @@
 **Scope:** Close the product-evidence and workflow gaps in the supplied competitor comparison.  
 **Planning basis:** The six gaps and strategy notes supplied by the user, repository inspection, and the public competitor sources linked below. This is a brownfield plan, not an authorization to run active tests against third-party networks.
 
-## Implementation checkpoint — 2026-10-03
+## Implementation checkpoint  -  2026-10-03
 
 The repository has implemented and locally validated the evidence/safety foundations
 and policy/export work noted by checked tasks below. The complete Python suite reports
@@ -78,13 +78,13 @@ The comparison below is limited to public sources that could be unambiguously lo
 
 ## Requirements
 
-- **REQ-001 — Robust validation:** Parser and API behavior must be exercised with malformed/adversarial inputs, a measured test baseline, and repeatable testbed scenarios.
-- **REQ-002 — Independent capture validation:** Validate supported parsing and policy behavior against legally usable, independently sourced captures with recorded provenance, checksums, and expected observations.
-- **REQ-003 — Defensible ML evidence:** Publish dataset/model cards, held-out metrics, calibration evidence, ablations, and limitations for the production classifier and the behavioral detector.
-- **REQ-004 — Traceable evidence:** Every packet-derived finding or key observation should link to the capture identity and a precise frame/byte location where available; unknown or inferred values must remain labeled as such.
-- **REQ-005 — Useful crypto posture:** Support an organization-specific policy overlay, per-tunnel downgrade/baseline tracking, CBOM export, and transparent CNSA 2.0 / Mosca-oriented readiness information.
-- **REQ-006 — Closed-loop retest:** Allow a user to review a suggested configuration fix, validate it, run it only in an authorized lab or supported offline validator, and compare a subsequent analysis with the baseline.
-- **REQ-007 — Active-tool safety:** Clearly separate passive analysis, simulation, lab activity, and active probing. Deny active activity outside the explicit authorization and scope boundary.
+- **REQ-001  -  Robust validation:** Parser and API behavior must be exercised with malformed/adversarial inputs, a measured test baseline, and repeatable testbed scenarios.
+- **REQ-002  -  Independent capture validation:** Validate supported parsing and policy behavior against legally usable, independently sourced captures with recorded provenance, checksums, and expected observations.
+- **REQ-003  -  Defensible ML evidence:** Publish dataset/model cards, held-out metrics, calibration evidence, ablations, and limitations for the production classifier and the behavioral detector.
+- **REQ-004  -  Traceable evidence:** Every packet-derived finding or key observation should link to the capture identity and a precise frame/byte location where available; unknown or inferred values must remain labeled as such.
+- **REQ-005  -  Useful crypto posture:** Support an organization-specific policy overlay, per-tunnel downgrade/baseline tracking, CBOM export, and transparent CNSA 2.0 / Mosca-oriented readiness information.
+- **REQ-006  -  Closed-loop retest:** Allow a user to review a suggested configuration fix, validate it, run it only in an authorized lab or supported offline validator, and compare a subsequent analysis with the baseline.
+- **REQ-007  -  Active-tool safety:** Clearly separate passive analysis, simulation, lab activity, and active probing. Deny active activity outside the explicit authorization and scope boundary.
 
 ## Technical approach and invariants
 
@@ -177,13 +177,13 @@ The comparison below is limited to public sources that could be unambiguously lo
 
 | Requirement | Plan items | Completion evidence |
 |---|---|---|
-| REQ-001 — Robust validation | 1.1, 2.1 | Test baseline/CI summary, deterministic fuzz tests, and real-capture parser regressions in `tests/`. |
-| REQ-002 — Independent capture validation | 2.1 | Licensed fixture corpus, provenance/checksum manifest, and TShark/Scapy regression results. |
-| REQ-003 — Defensible ML evidence | 3.1, 3.2 | Dataset/model cards, grouped split manifest, ablation results, calibration report, and limitations. |
-| REQ-004 — Traceable evidence | 2.2, 4.1 | Frame/byte evidence in API/report/UI, offset round-trip tests, and finding provenance. |
-| REQ-005 — Useful crypto posture | 4.1, 4.2, 5.1 | Policy overlay, downgrade history, sourced CNSA/Mosca assessment, CBOM schema/export, remediation candidate records. |
-| REQ-006 — Closed-loop retest | 5.1, 5.2 | Preview/approval flow, isolated retest result, before/after report, and end-to-end workflow tests. |
-| REQ-007 — Active-tool safety | 1.2, 5.1 | Auditable authorization, explicit execution-mode contracts, scope-denial tests, and safe default behavior. |
+| REQ-001  -  Robust validation | 1.1, 2.1 | Test baseline/CI summary, deterministic fuzz tests, and real-capture parser regressions in `tests/`. |
+| REQ-002  -  Independent capture validation | 2.1 | Licensed fixture corpus, provenance/checksum manifest, and TShark/Scapy regression results. |
+| REQ-003  -  Defensible ML evidence | 3.1, 3.2 | Dataset/model cards, grouped split manifest, ablation results, calibration report, and limitations. |
+| REQ-004  -  Traceable evidence | 2.2, 4.1 | Frame/byte evidence in API/report/UI, offset round-trip tests, and finding provenance. |
+| REQ-005  -  Useful crypto posture | 4.1, 4.2, 5.1 | Policy overlay, downgrade history, sourced CNSA/Mosca assessment, CBOM schema/export, remediation candidate records. |
+| REQ-006  -  Closed-loop retest | 5.1, 5.2 | Preview/approval flow, isolated retest result, before/after report, and end-to-end workflow tests. |
+| REQ-007  -  Active-tool safety | 1.2, 5.1 | Auditable authorization, explicit execution-mode contracts, scope-denial tests, and safe default behavior. |
 
 ## Suggested delivery sequence
 

@@ -161,13 +161,13 @@ Comparison models evaluated during benchmarking:
 ## Security Assessment & Policy Engine
 
 `config/security_policy.yaml` is evaluated at runtime to enforce deterministic security audits. Evaluated controls include:
-- `POL-01`: Protocol Modernity — Mandates IKEv2; flags deprecated IKEv1.
-- `POL-02`: Cryptographic Strength — Evaluates cipher suite strength (requires AES-GCM; flags AES-CBC + HMAC; rejects 3DES/DES).
-- `POL-03`: Diffie-Hellman Security — Verifies DH Groups (rejects MODP Group 2, Group 5; mandates Group ≥ 14 or ECP Group 19/20).
-- `POL-04`: Perfect Forward Secrecy — Validates PFS configuration across CHILD_SA negotiations.
-- `POL-05`: Integrity & PRF Protection — Rejects obsolete MD5 and SHA-1 algorithms; enforces SHA-256+.
-- `POL-06`: Operational Encapsulation Mode — Evaluates Tunnel Mode vs Transport Mode (prefers Tunnel Mode to minimize metadata exposure).
-- `POL-07`: Key Lifetime & Replay Protection — Validates SA lifetime parameters (default 28,800s) and anti-replay sequence windows.
+- `POL-01`: Protocol Modernity  -  Mandates IKEv2; flags deprecated IKEv1.
+- `POL-02`: Cryptographic Strength  -  Evaluates cipher suite strength (requires AES-GCM; flags AES-CBC + HMAC; rejects 3DES/DES).
+- `POL-03`: Diffie-Hellman Security  -  Verifies DH Groups (rejects MODP Group 2, Group 5; mandates Group ≥ 14 or ECP Group 19/20).
+- `POL-04`: Perfect Forward Secrecy  -  Validates PFS configuration across CHILD_SA negotiations.
+- `POL-05`: Integrity & PRF Protection  -  Rejects obsolete MD5 and SHA-1 algorithms; enforces SHA-256+.
+- `POL-06`: Operational Encapsulation Mode  -  Evaluates Tunnel Mode vs Transport Mode (prefers Tunnel Mode to minimize metadata exposure).
+- `POL-07`: Key Lifetime & Replay Protection  -  Validates SA lifetime parameters (default 28,800s) and anti-replay sequence windows.
 
 Findings are weighted (`HIGH=30`, `MEDIUM=15`, `LOW=5`), contributing to the Risk Score and 3x3 Threat Matrix, while compliance score reflects passed vs total checks.
 

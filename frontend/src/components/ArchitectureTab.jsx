@@ -224,7 +224,7 @@ export default function ArchitectureTab() {
             </h1>
 
             <p style={{ fontSize: '0.96rem', color: 'var(--text-secondary)', lineHeight: 1.6, maxWidth: '820px' }}>
-              Comprehensive technical specification describing the dual-layer architecture of <strong>PrivComm</strong> — featuring the <strong>High-Level Architecture (HLA)</strong> with live multi-tier dataflow orchestration, the <strong>Low-Level Architecture (LLA)</strong> covering zero-payload packet dissection, RFC 4303 arithmetic cipher elimination, 28-feature XGBoost/IsolationForest models, multi-vendor AST parsing, and RFC 8032 Ed25519 Merkle audit seals.
+              Comprehensive technical specification describing the dual-layer architecture of <strong>PrivComm</strong>  -  featuring the <strong>High-Level Architecture (HLA)</strong> with live multi-tier dataflow orchestration, the <strong>Low-Level Architecture (LLA)</strong> covering zero-payload packet dissection, RFC 4303 arithmetic cipher elimination, 28-feature XGBoost/IsolationForest models, multi-vendor AST parsing, and RFC 8032 Ed25519 Merkle audit seals.
             </p>
           </div>
         </div>

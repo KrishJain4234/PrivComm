@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PrivComm — Standalone PCAP IPsec Protocol & Traffic Inspector CLI.
+PrivComm  -  Standalone PCAP IPsec Protocol & Traffic Inspector CLI.
 
 Parses a PCAP/PCAPNG file using PrivComm's protocol dissection & ML inference pipeline
 and outputs a clean, structured JSON object matching PS-26160 requirements.

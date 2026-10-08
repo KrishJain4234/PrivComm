@@ -112,7 +112,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
               }
             </button>
 
-            {/* Mobile menu toggle — hidden via CSS on wide screens */}
+            {/* Mobile menu toggle  -  hidden via CSS on wide screens */}
             <button
               type="button"
               className="mobile-menu-toggle"

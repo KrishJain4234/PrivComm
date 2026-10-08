@@ -447,12 +447,12 @@ h1, h2, h3, h4, h5, h6 {
   gap: 24px;
 }
 
-/* Brand — hidden after logo removal */
+/* Brand  -  hidden after logo removal */
 .brand-wrapper {
   display: none;
 }
 
-/* Nav Tabs — centered since brand is removed */
+/* Nav Tabs  -  centered since brand is removed */
 .nav-tabs {
   display: flex;
   align-items: center;
@@ -511,7 +511,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 8px var(--accent-cyan);
 }
 
-/* Status Badge — unified cyan */
+/* Status Badge  -  unified cyan */
 .header-status-badge {
   display: flex;
   align-items: center;
@@ -1322,6 +1322,14 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
+.footer-credit {
+  margin-top: 7px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
 .footer-demo {
   width: min(100%, 560px);
   margin-top: 18px;
@@ -1387,7 +1395,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   Badge Utility Classes — Unified Cybersecurity Palette
+   Badge Utility Classes  -  Unified Cybersecurity Palette
    -------------------------------------------------------------------------- */
 .badge {
   display: inline-flex;
@@ -1415,28 +1423,28 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(59, 130, 246, 0.25);
 }
 
-/* Secure/positive status — theme-adaptive green */
+/* Secure/positive status  -  theme-adaptive green */
 .badge-green {
   background: var(--status-success-dim);
   color: var(--status-success);
   border: 1px solid var(--status-success-border);
 }
 
-/* Caution/negative status — theme-adaptive red */
+/* Caution/negative status  -  theme-adaptive red */
 .badge-red {
   background: var(--status-danger-dim);
   color: var(--status-danger);
   border: 1px solid var(--status-danger-border);
 }
 
-/* Warning status — theme-adaptive amber */
+/* Warning status  -  theme-adaptive amber */
 .badge-yellow {
   background: var(--status-warning-dim);
   color: var(--status-warning);
   border: 1px solid var(--status-warning-border);
 }
 
-/* Informational status — theme-adaptive cyan */
+/* Informational status  -  theme-adaptive cyan */
 .badge-cyan {
   background: var(--status-info-dim);
   color: var(--status-info);
