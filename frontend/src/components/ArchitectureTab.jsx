@@ -94,18 +94,18 @@ const FunctionCallGraph = () => {
   );
 };
 
-const TechnologyStack = () => {
+const TechnologyStack = ({ onSelect }) => {
   const technologies = [
-    { group: 'Frontend', name: 'React 19', logo: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB' },
-    { group: 'Frontend', name: 'Vite', logo: 'Vite', src: 'https://cdn.simpleicons.org/vite/646CFF' },
-    { group: 'Backend', name: 'Python + FastAPI', logo: 'Python', src: 'https://cdn.simpleicons.org/python/3776AB' },
-    { group: 'Backend', name: 'FastAPI ASGI', logo: 'FastAPI', src: 'https://cdn.simpleicons.org/fastapi/009688' },
-    { group: 'ML Engine', name: 'XGBoost', logo: 'XGBoost', src: 'https://cdn.simpleicons.org/xgboost/189FDD' },
-    { group: 'ML Engine', name: 'scikit-learn / IsolationForest', logo: 'scikit-learn', src: 'https://cdn.simpleicons.org/scikitlearn/F7931E' },
-    { group: 'Testbed', name: 'strongSwan', logo: 'strongSwan', src: 'https://cdn.simpleicons.org/strongswan/2563EB' },
-    { group: 'Persistence', name: 'Supabase / PostgreSQL', logo: 'Supabase', src: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
-    { group: 'Persistence', name: 'SQLite', logo: 'SQLite', src: 'https://cdn.simpleicons.org/sqlite/003B57' },
-    { group: 'Runtime', name: 'Docker', logo: 'Docker', src: 'https://cdn.simpleicons.org/docker/2496ED' },
+    { group: 'Frontend', name: 'React 19', logo: 'React', src: 'https://cdn.simpleicons.org/react/61DAFB', explainKey: 'stack-frontend' },
+    { group: 'Frontend', name: 'Vite', logo: 'Vite', src: 'https://cdn.simpleicons.org/vite/646CFF', explainKey: 'stack-frontend' },
+    { group: 'Backend', name: 'Python + FastAPI', logo: 'Python', src: 'https://cdn.simpleicons.org/python/3776AB', explainKey: 'stack-backend' },
+    { group: 'Backend', name: 'FastAPI ASGI', logo: 'FastAPI', src: 'https://cdn.simpleicons.org/fastapi/009688', explainKey: 'stack-backend' },
+    { group: 'ML Engine', name: 'XGBoost', logo: 'XGBoost', src: 'https://cdn.simpleicons.org/xgboost/189FDD', explainKey: 'stack-ml' },
+    { group: 'ML Engine', name: 'scikit-learn / IsolationForest', logo: 'scikit-learn', src: 'https://cdn.simpleicons.org/scikitlearn/F7931E', explainKey: 'stack-ml' },
+    { group: 'Testbed', name: 'strongSwan', logo: 'strongSwan', src: 'https://cdn.simpleicons.org/strongswan/2563EB', explainKey: 'stack-testbed' },
+    { group: 'Persistence', name: 'Supabase / PostgreSQL', logo: 'Supabase', src: 'https://cdn.simpleicons.org/supabase/3FCF8E', explainKey: 'stack-persistence' },
+    { group: 'Persistence', name: 'SQLite', logo: 'SQLite', src: 'https://cdn.simpleicons.org/sqlite/003B57', explainKey: 'stack-persistence' },
+    { group: 'Runtime', name: 'Docker', logo: 'Docker', src: 'https://cdn.simpleicons.org/docker/2496ED', explainKey: 'stack-runtime' },
   ];
   return (
     <section className="architecture-technology-section" aria-labelledby="technology-stack-title">
@@ -119,7 +119,20 @@ const TechnologyStack = () => {
       </div>
       <div className="architecture-technology-grid">
         {technologies.map((technology) => (
-          <div className="architecture-technology-card" key={`${technology.group}-${technology.name}`}>
+          <div
+            className="architecture-technology-card arch-interactive-box"
+            key={`${technology.group}-${technology.name}`}
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelect(technology.explainKey)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onSelect(technology.explainKey);
+              }
+            }}
+            title="Click to view a plain-language explanation"
+          >
             <span className="architecture-technology-group">{technology.group}</span>
             <div className="architecture-technology-logo-row">
               <TechLogo name={technology.logo} src={technology.src} />
@@ -135,6 +148,16 @@ const TechnologyStack = () => {
  * Modal Popup for plain-English explanation
  */
 const ExplanationModal = ({ item, onClose }) => {
+  useEffect(() => {
+    if (!item) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [item]);
+
   if (!item) return null;
 
   return (
@@ -196,9 +219,16 @@ const ExplanationModal = ({ item, onClose }) => {
           {/* Section 3: Why It Matters */}
           <div className="arch-modal-card value">
             <div className="arch-card-heading">
-              <span>Why It Matters &amp; How It Protects You</span>
+              <span>Why It Matters for PrivComm</span>
             </div>
             <p className="arch-card-text">{item.whyItMatters}</p>
+          </div>
+
+          <div className="arch-modal-card protection">
+            <div className="arch-card-heading">
+              <span>How It Protects the User</span>
+            </div>
+            <p className="arch-card-text">{item.howItProtects || item.whyItMatters}</p>
           </div>
 
           {/* Section 4: Under The Hood (Technical Details) */}
@@ -1922,7 +1952,7 @@ export default function ArchitectureTab() {
 
               </div>
 
-              <TechnologyStack />
+              <TechnologyStack onSelect={openExplain} />
             </section>
 
           </main>

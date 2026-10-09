@@ -919,6 +919,21 @@ export const ARCHITECTURE_EXPLANATIONS = {
     technicalDetails:
       'Supabase cloud PostgreSQL with Row-Level Security plus zero-configuration embedded SQLite fallback.'
   },
+  'stack-runtime': {
+    title: 'Runtime: Docker',
+    category: 'Tech Stack • Deployment Runtime',
+    badge: 'Container Runtime',
+    simpleExplanation:
+      'Docker packages the PrivComm frontend, backend, databases, and IPsec testbed dependencies into repeatable containers so the same system can be started consistently on a developer machine, a server, or an isolated evaluation environment.',
+    analogy:
+      'Like shipping an application in a sealed, labelled transport case that contains the application and the exact supporting equipment it needs to operate.',
+    whyItMatters:
+      'Consistent containers reduce deployment differences and make the testbed easier to reproduce during security testing and demonstrations.',
+    howItProtects:
+      'Container isolation keeps the simulated IPsec nodes and their attack scenarios separated from the host environment, reducing the risk of mixing test traffic with production traffic.',
+    technicalDetails:
+      'Docker Compose coordinates the application services and the multi-node strongSwan testbed, including their networks, startup order, ports, and persistent volumes.'
+  },
   'stack-attestation': {
     title: 'Attestation: Ed25519 + Merkle Tree',
     category: 'Tech Stack • Cryptography',
