@@ -158,7 +158,6 @@ const ExplanationModal = ({ item, onClose }) => {
             <div>
               <div className="arch-modal-kicker">
                 <span>{item.category}</span>
-                {item.badge && <span className="arch-modal-badge">{item.badge}</span>}
               </div>
               <h2 id="arch-modal-title" className="arch-modal-title">
                 {item.title}
@@ -181,7 +180,6 @@ const ExplanationModal = ({ item, onClose }) => {
           {/* Section 1: In Simple Words */}
           <div className="arch-modal-card simple">
             <div className="arch-card-heading">
-              <span className="arch-card-emoji">💡</span>
               <span>In Simple Words (Zero Jargon)</span>
             </div>
             <p className="arch-card-text">{item.simpleExplanation}</p>
@@ -190,7 +188,6 @@ const ExplanationModal = ({ item, onClose }) => {
           {/* Section 2: Real-World Everyday Analogy */}
           <div className="arch-modal-card analogy">
             <div className="arch-card-heading">
-              <span className="arch-card-emoji">🌍</span>
               <span>Real-World Everyday Analogy</span>
             </div>
             <p className="arch-card-text">{item.analogy}</p>
@@ -199,7 +196,6 @@ const ExplanationModal = ({ item, onClose }) => {
           {/* Section 3: Why It Matters */}
           <div className="arch-modal-card value">
             <div className="arch-card-heading">
-              <span className="arch-card-emoji">🛡️</span>
               <span>Why It Matters &amp; How It Protects You</span>
             </div>
             <p className="arch-card-text">{item.whyItMatters}</p>
@@ -208,7 +204,6 @@ const ExplanationModal = ({ item, onClose }) => {
           {/* Section 4: Under The Hood (Technical Details) */}
           <div className="arch-modal-card tech">
             <div className="arch-card-heading">
-              <span className="arch-card-emoji">⚙️</span>
               <span>Under The Hood (Technical Details &amp; Code)</span>
             </div>
             <p className="arch-card-text mono">{item.technicalDetails}</p>
@@ -440,13 +435,6 @@ export default function ArchitectureTab() {
           letter-spacing: 0.06em;
           margin-bottom: 2px;
         }
-        .arch-modal-badge {
-          padding: 1px 6px;
-          border-radius: 4px;
-          background: var(--bg-tertiary);
-          color: var(--text-secondary);
-          border: 1px solid var(--border-subtle);
-        }
         .arch-modal-title {
           font-size: 1.25rem;
           font-weight: 800;
@@ -512,9 +500,6 @@ export default function ArchitectureTab() {
           letter-spacing: 0.06em;
           color: var(--text-primary);
           margin-bottom: 6px;
-        }
-        .arch-card-emoji {
-          font-size: 0.9rem;
         }
         .arch-card-text {
           font-size: 0.88rem;
@@ -738,53 +723,6 @@ export default function ArchitectureTab() {
               </nav>
             </div>
 
-            {/* Quick Tech Architecture Card (Interactive Clickable Badges) */}
-            <div
-              style={{
-                background: 'linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%)',
-                border: '1px solid var(--border-default)',
-                borderRadius: '16px',
-                padding: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px',
-                boxShadow: 'var(--shadow-sm)'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-cyan)', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  <Cpu size={14} />
-                  <span>PrivComm Tech Stack</span>
-                </div>
-                <span className="arch-click-cue">Inspect ↗</span>
-              </div>
-              <div className="architecture-tech-grid">
-                <ClickBox explainKey="stack-frontend" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>FRONTEND</div>
-                  <div className="architecture-tech-name"><TechMark type="react" label="React" /><TechMark type="vite" label="Vite" /><span>React 19 + Vite</span></div>
-                </ClickBox>
-                <ClickBox explainKey="stack-backend" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>BACKEND</div>
-                  <div className="architecture-tech-name"><TechMark type="python" label="Python" /><span>FastAPI ASGI</span></div>
-                </ClickBox>
-                <ClickBox explainKey="stack-ml" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ML ENGINE</div>
-                  <div className="architecture-tech-name"><TechMark type="ml" label="XGBoost" /><span>XGBoost + IsolationForest</span></div>
-                </ClickBox>
-                <ClickBox explainKey="stack-testbed" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>TESTBED</div>
-                  <div className="architecture-tech-name"><TechMark type="swan" label="strongSwan" /><span>strongSwan 4-Node</span></div>
-                </ClickBox>
-                <ClickBox explainKey="stack-persistence" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>PERSISTENCE</div>
-                  <div className="architecture-tech-name"><TechMark type="postgres" label="PostgreSQL" /><TechMark type="sqlite" label="SQLite" /><span>Supabase / SQLite</span></div>
-                </ClickBox>
-                <ClickBox explainKey="stack-attestation" className="architecture-tech-card">
-                  <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginBottom: '2px' }}>ATTESTATION</div>
-                  <div className="architecture-tech-name"><TechMark type="crypto" label="Ed25519" /><span>Ed25519 + Merkle</span></div>
-                </ClickBox>
-              </div>
-            </div>
           </aside>
 
           {/* Right Main Content */}
@@ -945,15 +883,15 @@ export default function ArchitectureTab() {
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
                     <ClickBox explainKey="tier1-analyst" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🛡️ Security Analyst</div>
+                      <div>Security Analyst</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier1-engineer" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>⚙️ Security Engineer</div>
+                      <div>Security Engineer</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier1-soc" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>📋 SOC / Compliance Reviewer</div>
+                      <div>SOC / Compliance Reviewer</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                   </div>
@@ -971,31 +909,27 @@ export default function ArchitectureTab() {
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
                     <ClickBox explainKey="tier2-telemetry" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>📊 Telemetry</div>
+                      <div>Telemetry</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier2-pcap" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🔍 PCAP Analyzer</div>
+                      <div>PCAP Analyzer</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier2-testbed" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🖥️ 4-Node Testbed</div>
+                      <div>4-Node Testbed</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier2-history" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🗄️ History Vault</div>
+                      <div>History Vault</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier2-compliance" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>⚖️ Compliance Matrix</div>
+                      <div>Compliance Matrix</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier2-architecture" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🏛️ Architecture</div>
-                      <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
-                    </ClickBox>
-                    <ClickBox explainKey="tier2-sentinel" style={{ padding: '8px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🤖 AI Sentinel</div>
+                      <div>Architecture</div>
                       <div className="arch-click-cue" style={{ marginTop: '2px' }}>Inspect ↗</div>
                     </ClickBox>
                   </div>
@@ -1191,22 +1125,22 @@ export default function ArchitectureTab() {
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px', fontSize: '0.72rem' }}>
                       <ClickBox explainKey="tier6-risk" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        📈 Risk Calculator
+                        Risk Calculator
                       </ClickBox>
                       <ClickBox explainKey="tier6-recommendations" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        💡 Recommendation Engine
+                        Recommendation Engine
                       </ClickBox>
                       <ClickBox explainKey="tier6-drift" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        📉 Drift &amp; Downgrade
+                        Drift &amp; Downgrade
                       </ClickBox>
                       <ClickBox explainKey="tier6-pqc" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        ⚛️ Post-Quantum (PQC)
+                        Post-Quantum (PQC)
                       </ClickBox>
                       <ClickBox explainKey="tier6-metadata" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        👁️ Metadata Exposure
+                        Metadata Exposure
                       </ClickBox>
                       <ClickBox explainKey="tier6-seal" style={{ padding: '6px 8px', background: 'var(--bg-tertiary)', borderRadius: '6px', color: 'var(--text-secondary)' }}>
-                        🔏 Ed25519 Merkle Seal
+                        Ed25519 Merkle Seal
                       </ClickBox>
                     </div>
                   </div>
@@ -1222,19 +1156,19 @@ export default function ArchitectureTab() {
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
                     <ClickBox explainKey="tier7-results" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>📑 Analysis Results &amp; Findings</div>
+                      <div>Analysis Results &amp; Findings</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier7-scorecard" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🎯 100-Point Security Scorecard</div>
+                      <div>100-Point Security Scorecard</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier7-diffs" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>🔧 Hardened Remediation Diffs</div>
+                      <div>Hardened Remediation Diffs</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                     <ClickBox explainKey="tier7-reports" style={{ padding: '10px 14px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '8px', textAlign: 'center', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                      <div>📄 Executive PDF &amp; HTML Reports</div>
+                      <div>Executive PDF &amp; HTML Reports</div>
                       <div className="arch-click-cue" style={{ marginTop: '4px' }}>Inspect ↗</div>
                     </ClickBox>
                   </div>
