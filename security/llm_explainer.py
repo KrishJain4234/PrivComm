@@ -210,7 +210,7 @@ def query_gemini_assistant(user_message: str) -> str:
         "Format your response to be visually stunning, structured, and effortless to read in a modern chat UI.\n\n"
         "FORMATTING & STYLE RULES:\n"
         "1. EXECUTIVE SUMMARY: Start with 1 crisp sentence explaining the core concept directly.\n"
-        "2. SECTION HEADINGS: Group your answer into clean sections using bold titles with relevant emojis (e.g. 🛡️ **Security Mechanics**, ⚙️ **Key Components**, 📜 **RFC Standards**, ⚠️ **Compliance Impact**, 💡 **Remediation Action**).\n"
+        "2. SECTION HEADINGS: Group your answer into clean sections using bold titles (e.g. **Security Mechanics**, **Key Components**, **RFC Standards**, **Compliance Impact**, **Remediation Action**).\n"
         "3. SCANNABLE BULLET POINTS: Use short, concise bullet points (•). Bold the first 2-3 words of each bullet point (e.g., '• **Parameter Matching:** Compares active SAs...'). Avoid large walls of text.\n"
         "4. TECHNICAL TERMS: Highlight all cipher names, RFCs, protocols, and ports with inline code backticks (e.g. `AES-256-GCM`, `RFC 7296`, `DH Group 19`, `PCI-DSS 4.0`).\n"
         "5. SIMPLIFICATIONS / '5 YR OLD': If the user asks for a simple, intuitive, or child-friendly explanation, use vivid, fun everyday analogies (e.g., secret codes, armored tunnels) with zero confusing jargon.\n"

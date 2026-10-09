@@ -417,7 +417,7 @@ function TunnelViz({ stage, isRunning, packetPos }) {
                     boxShadow: "0 0 14px rgba(88,166,255,0.75)",
                   }}
                 >
-                  🔒
+                  
                 </div>
               </div>
             )}
@@ -711,7 +711,7 @@ function ResultCard({ job, onNavigateToAnalysis }) {
       </div>
       {!isDemo && result.tunnel_integrity && (
         <div style={{ background: "rgba(56,189,248,0.06)", border: "1px solid rgba(56,189,248,0.25)", borderRadius: "6px", padding: "8px 12px", marginBottom: "12px", fontSize: "0.72rem", fontFamily: "JetBrains Mono, monospace", color: "var(--accent-cyan)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "8px" }}>
-          <span>🔒 Handshake Integrity Verified: <strong>{result.tunnel_integrity.algorithm}</strong></span>
+          <span> Handshake Integrity Verified: <strong>{result.tunnel_integrity.algorithm}</strong></span>
           <span style={{ color: "var(--text-tertiary)" }}>Digest: {result.tunnel_integrity.digest_short || result.tunnel_integrity.handshake_digest?.slice(0, 20)}...</span>
         </div>
       )}
@@ -801,7 +801,7 @@ function StageBar({ currentStage }) {
               }}
             >
               <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "0.62rem", fontWeight: 700, color: done ? "var(--status-success)" : active ? "var(--accent-blue)" : "var(--text-tertiary)" }}>
-                {done ? "✓" : i + 1}
+                {done ? "" : i + 1}
               </div>
               <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "0.6rem", color: done ? "var(--status-success)" : active ? "var(--accent-blue)" : "var(--text-tertiary)" }}>{s}</div>
             </div>

@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "512"
     vb.cpus = 1
     vb.gui = false
-    vb.linked_clone = true   # ⚡ Instant disk creation & 80% less disk space
+    vb.linked_clone = true   #  Instant disk creation & 80% less disk space
   end
 
   # ==========================================

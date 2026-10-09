@@ -469,7 +469,7 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
     setOrchestrationMode('FALLBACK_SIM');
     const t = new Date().toLocaleTimeString();
     setLiveTimeline(prev => [
-      { time: t, text: `⚠️ [Browser demo simulation] ${reason ? `(${reason})` : ''} - Switching to illustrative telemetry; no VM or network capture is running`, type: 'ai' },
+      { time: t, text: ` [Browser demo simulation] ${reason ? `(${reason})` : ''} - Switching to illustrative telemetry; no VM or network capture is running`, type: 'ai' },
       ...prev
     ]);
 
@@ -611,7 +611,7 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
             // Synthetic packets are reserved for FALLBACK_SIM mode.
             setIsAutoStreaming(false);
             setLiveTimeline(prev => [
-              { time: new Date().toLocaleTimeString(), text: '✅ Physical strongSwan IPsec tunnel established! Automated real-time packet stream engaged.', type: 'secure' },
+              { time: new Date().toLocaleTimeString(), text: ' Physical strongSwan IPsec tunnel established! Automated real-time packet stream engaged.', type: 'secure' },
               ...prev
             ]);
             return;
@@ -818,7 +818,7 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
             border: `1px solid ${(selectedScenario.hash_algorithm || selectedScenario.hashAlgorithm || 'SHA-256') === 'MD5' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(52, 211, 153, 0.3)'}`,
             whiteSpace: 'nowrap'
           }}>
-            🔒 Hash: {selectedScenario.hash_algorithm || selectedScenario.hashAlgorithm || 'SHA-256'}
+             Hash: {selectedScenario.hash_algorithm || selectedScenario.hashAlgorithm || 'SHA-256'}
           </span>
         </div>
 
@@ -1000,12 +1000,12 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
             PROFILE MIX:
           </span>
           {[
-            { id: 'MIXED', label: '🎲 Mixed Realistic Mix', color: 'var(--accent-cyan)' },
-            { id: 'VIDEO_STREAM', label: '🎬 Video Stream', color: '#38bdf8' },
-            { id: 'HTTP_GET', label: '🌐 Web Browsing', color: '#34d399' },
-            { id: 'DNS_BURST', label: '🔍 DNS Queries', color: '#a78bfa' },
-            { id: 'VOIP_RTP', label: '📞 VoIP Audio', color: '#f59e0b' },
-            { id: 'IPERF_BURST', label: '📁 File Transfer', color: '#ec4899' }
+            { id: 'MIXED', label: ' Mixed Realistic Mix', color: 'var(--accent-cyan)' },
+            { id: 'VIDEO_STREAM', label: ' Video Stream', color: '#38bdf8' },
+            { id: 'HTTP_GET', label: ' Web Browsing', color: '#34d399' },
+            { id: 'DNS_BURST', label: ' DNS Queries', color: '#a78bfa' },
+            { id: 'VOIP_RTP', label: ' VoIP Audio', color: '#f59e0b' },
+            { id: 'IPERF_BURST', label: ' File Transfer', color: '#ec4899' }
           ].map(prof => (
             <button
               key={prof.id}
@@ -1082,7 +1082,7 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
                   }}
                 >
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: isDone ? 'var(--accent-green)' : isCurr ? 'var(--accent-yellow)' : 'var(--text-tertiary)', marginBottom: '4px' }}>
-                    {isDone ? '✓ STEP 0' + s.step : 'STEP 0' + s.step}
+                    {isDone ? ' STEP 0' + s.step : 'STEP 0' + s.step}
                   </div>
                   <div style={{ fontWeight: 700, fontSize: '0.82rem', color: 'var(--text-primary)' }}>{s.label}</div>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>{s.desc}</div>

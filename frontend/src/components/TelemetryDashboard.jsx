@@ -162,7 +162,7 @@ export default function TelemetryDashboard({ externalAnalysis, onNavigateToTestb
       setChatMessages(prev => [...prev, { sender: 'ai', text: reply }]);
     } catch (err) {
       console.warn('AI Chat Error:', err);
-      setChatMessages(prev => [...prev, { sender: 'ai', text: '⚠️ Unable to process query. Please check your network connection.' }]);
+      setChatMessages(prev => [...prev, { sender: 'ai', text: ' Unable to process query. Please check your network connection.' }]);
     } finally {
       setChatLoading(false);
     }

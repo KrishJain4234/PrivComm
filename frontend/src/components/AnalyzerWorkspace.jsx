@@ -514,7 +514,7 @@ conn Cloud-to-Datacenter
           }}
         >
           <UploadCloud size={16} />
-          <span>📁 PCAP Network Capture (.pcap / .pcapng)</span>
+          <span> PCAP Network Capture (.pcap / .pcapng)</span>
         </button>
 
         <button
@@ -536,7 +536,7 @@ conn Cloud-to-Datacenter
           }}
         >
           <Code2 size={16} />
-          <span>⚙️ Multi-Vendor Firewall Config (Cisco, Fortinet, pfSense)</span>
+          <span> Multi-Vendor Firewall Config (Cisco, Fortinet, pfSense)</span>
         </button>
       </div>
 
@@ -653,7 +653,7 @@ conn Cloud-to-Datacenter
                   cursor: 'pointer'
                 }}
               >
-                <option value="auto">✨ Auto-Detect Vendor</option>
+                <option value="auto"> Auto-Detect Vendor</option>
                 <option value="cisco">Cisco ASA / IOS-XE</option>
                 <option value="fortinet">Fortinet FortiOS</option>
                 <option value="pfsense">pfSense / OPNsense (XML)</option>
@@ -670,35 +670,35 @@ conn Cloud-to-Datacenter
                 onClick={() => handleSelectVendorSample('cisco_asa_weak')}
                 style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#ef4444', borderRadius: '4px', padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
               >
-                🔴 Cisco ASA (3DES Weak)
+                 Cisco ASA (3DES Weak)
               </button>
               <button
                 type="button"
                 onClick={() => handleSelectVendorSample('cisco_ios_modern')}
                 style={{ background: 'var(--accent-cyan-dim)', border: '1px solid var(--border-default)', color: 'var(--accent-cyan)', borderRadius: '4px', padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
               >
-                🟢 Cisco IOS-XE (Compliant)
+                 Cisco IOS-XE (Compliant)
               </button>
               <button
                 type="button"
                 onClick={() => handleSelectVendorSample('fortinet_fortios')}
                 style={{ background: 'var(--accent-cyan-dim)', border: '1px solid var(--border-default)', color: 'var(--accent-cyan)', borderRadius: '4px', padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
               >
-                🟢 Fortinet FortiOS
+                 Fortinet FortiOS
               </button>
               <button
                 type="button"
                 onClick={() => handleSelectVendorSample('pfsense_xml')}
                 style={{ background: 'var(--accent-cyan-dim)', border: '1px solid var(--border-default)', color: 'var(--accent-cyan)', borderRadius: '4px', padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
               >
-                🟢 pfSense XML
+                 pfSense XML
               </button>
               <button
                 type="button"
                 onClick={() => handleSelectVendorSample('libreswan_conf')}
                 style={{ background: 'var(--accent-cyan-dim)', border: '1px solid var(--border-default)', color: 'var(--accent-cyan)', borderRadius: '4px', padding: '3px 8px', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
               >
-                🟢 Libreswan
+                 Libreswan
               </button>
             </div>
           </div>
