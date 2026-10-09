@@ -1,0 +1,12 @@
+{
+  "seal_id": "PC-SEAL-analysis-2-1791485193433",
+  "analysis_id": "analysis-2",
+  "sealed_at": "2026-10-08T18:46:33.432165+00:00",
+  "leaf_hashes": [
+    "96bd193cac5f616a22b04c1c88152b7f28ef49938b0c385501a8ce7c764cabb1"
+  ],
+  "merkle_root": "96bd193cac5f616a22b04c1c88152b7f28ef49938b0c385501a8ce7c764cabb1",
+  "signature": "374daf944566f8c7c2cb08f84c96e2bee244ddf7fdf5e9c63bc43f97527f1337b89aff86fd49a7089157cb09d024a4552ab119e966e5a344b38a4c32cd5acf09",
+  "public_key": "8c4e88444d61a39154d621c676e87835a72322c46b4ef95cd10525b72472f8aa",
+  "algorithm": "SHA256-MERKLE+ED25519"
+}

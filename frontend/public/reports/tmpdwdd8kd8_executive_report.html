@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivComm  -  Executive Security & Protocol Assessment Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #060c18;
+            --card-bg: #0d172b;
+            --card-bg-subtle: #111f38;
+            --border-color: rgba(56, 189, 248, 0.18);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #38bdf8;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-yellow: #eab308;
+            --accent-red: #ef4444;
+            --accent-purple: #a855f7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Sticky Action Bar (Hidden when printing to PDF) */
+        .print-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 23, 43, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .print-bar-inner {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .print-bar-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .print-bar-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .print-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-pdf:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, #0369a1, #1d4ed8);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            color: var(--text-primary);
+            border-color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 36px 24px 60px 24px;
+        }
+
+        /* Document Header */
+        .report-header {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .report-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .header-top h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            padding-top: 14px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-item strong {
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .badge-secure { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+        .badge-medium, .badge-warning { background: rgba(234, 179, 8, 0.15); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.4); }
+        .badge-high, .badge-critical { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+        /* Metric Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px 18px;
+            text-align: left;
+            position: relative;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .metric-value {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.2;
+        }
+
+        .metric-sub {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 32px 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+        }
+
+        /* Tables */
+        .table-wrap {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        th {
+            background: var(--card-bg-subtle);
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent-cyan);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* 3x3 Threat Matrix */
+        .matrix-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 28px;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 110px repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .matrix-header {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 6px;
+        }
+
+        .matrix-row-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+        }
+
+        .matrix-cell {
+            padding: 16px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .matrix-low { background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .matrix-med { background: rgba(234, 179, 8, 0.12); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .matrix-high { background: rgba(239, 68, 68, 0.14); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+
+        /* Findings / Recommendations Cards */
+        .finding-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-yellow);
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+        }
+
+        .finding-card.HIGH, .finding-card.CRITICAL, .finding-card.OBSOLETE { border-left-color: var(--accent-red); }
+        .finding-card.MEDIUM, .finding-card.WEAK { border-left-color: var(--accent-yellow); }
+        .finding-card.LOW, .finding-card.SECURE { border-left-color: var(--accent-green); }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .finding-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .finding-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            line-height: 1.55;
+        }
+
+        .finding-remediation {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: var(--card-bg-subtle);
+            border-radius: 6px;
+            border-left: 2px solid var(--accent-cyan);
+            font-size: 0.83rem;
+            color: var(--text-primary);
+        }
+
+        /* Observability Limitations */
+        .known-limitations {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+        }
+
+        .known-limitations summary {
+            cursor: pointer;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        .limitation-item {
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 12px;
+            padding-top: 12px;
+            font-size: 0.84rem;
+        }
+
+        .report-footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+        }
+
+        /* ── PDF & Print Layout Styles ───────────────────────── */
+        @page {
+            size: A4 portrait;
+            margin: 12mm 14mm 12mm 14mm;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                font-size: 9.5pt !important;
+                line-height: 1.45 !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .report-header {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+                padding: 18px 22px !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+
+            .header-top h1 {
+                color: #0f172a !important;
+                font-size: 16pt !important;
+            }
+
+            .header-meta {
+                border-top: 1px solid #e2e8f0 !important;
+                color: #475569 !important;
+            }
+
+            .header-meta strong {
+                color: #0f172a !important;
+            }
+
+            .metrics-grid {
+                gap: 10px !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+
+            .metric-card {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                color: #0f172a !important;
+                padding: 12px 14px !important;
+                page-break-inside: avoid;
+            }
+
+            .metric-value {
+                color: #0369a1 !important;
+                font-size: 14pt !important;
+            }
+
+            .metric-label, .metric-sub {
+                color: #64748b !important;
+            }
+
+            .section-title {
+                color: #0f172a !important;
+                margin: 20px 0 10px 0 !important;
+                font-size: 11pt !important;
+                page-break-after: avoid;
+            }
+
+            .section-title::before {
+                background: #0284c7 !important;
+            }
+
+            .table-wrap {
+                background: #ffffff !important;
+                border: 1px solid #cbd5e1 !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+
+            table {
+                font-size: 8.5pt !important;
+            }
+
+            th {
+                background: #f1f5f9 !important;
+                color: #334155 !important;
+                border-bottom: 1px solid #cbd5e1 !important;
+            }
+
+            td {
+                border-bottom: 1px solid #e2e8f0 !important;
+                color: #0f172a !important;
+            }
+
+            td code {
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+                color: #0369a1 !important;
+            }
+
+            .matrix-container {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                padding: 14px !important;
+                margin-bottom: 18px !important;
+                page-break-inside: avoid;
+            }
+
+            .matrix-cell {
+                border-width: 1px !important;
+            }
+
+            .matrix-low { background: #dcfce7 !important; color: #15803d !important; border-color: #86efac !important; }
+            .matrix-med { background: #fef9c3 !important; color: #a16207 !important; border-color: #fde047 !important; }
+            .matrix-high { background: #fee2e2 !important; color: #b91c1c !important; border-color: #fca5a5 !important; }
+
+            .finding-card {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                border-left-width: 4px !important;
+                padding: 14px 18px !important;
+                margin-bottom: 10px !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .finding-card.HIGH, .finding-card.CRITICAL, .finding-card.OBSOLETE { border-left-color: #dc2626 !important; }
+            .finding-card.MEDIUM, .finding-card.WEAK { border-left-color: #d97706 !important; }
+            .finding-card.LOW, .finding-card.SECURE { border-left-color: #16a34a !important; }
+
+            .finding-title {
+                color: #0f172a !important;
+                font-size: 9.5pt !important;
+            }
+
+            .finding-body {
+                color: #334155 !important;
+            }
+
+            .finding-remediation {
+                background: #f1f5f9 !important;
+                border-left-color: #0284c7 !important;
+                color: #0f172a !important;
+            }
+
+            .report-footer {
+                color: #64748b !important;
+                border-top-color: #cbd5e1 !important;
+                margin-top: 24px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Action Bar for PDF Export (Excluded from printed PDF) -->
+    <div class="print-bar no-print">
+        <div class="print-bar-inner">
+            <div class="print-bar-title">
+                <span class="print-bar-tag">PRIVCOMM PDF EXPORT</span>
+                <span>Executive Security &amp; Protocol Assessment Report</span>
+            </div>
+            <div class="print-actions">
+                <button onclick="window.print()" class="btn-pdf">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9V2h12v7"></path>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    Save as PDF / Print
+                </button>
+                <button onclick="window.close()" class="btn-outline">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="report-header">
+            <div class="header-top">
+                <div>
+                    <div class="brand-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        PrivComm Security Platform
+                    </div>
+                    <h1>IPsec VPN Executive Assessment</h1>
+                </div>
+                <div>
+                    <span class="badge badge-medium">
+                        Risk Level: MEDIUM
+                    </span>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="meta-item">
+                    <span>Audit Target:</span>
+                    <strong>tmpdwdd8kd8.pcap</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Total Packets:</span>
+                    <strong>2</strong>
+                </div>
+                
+                <div class="meta-item">
+                    <span>Gateway Pair:</span>
+                    <strong>192.168.1.10 &rarr; 10.0.0.1</strong>
+                </div>
+                
+                <div class="meta-item">
+                    <span>Generated:</span>
+                    <strong>09 Oct 2026, 00:16 UTC</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Composite Risk Score</div>
+                <div class="metric-value">35<span style="font-size: 0.9rem; color: var(--text-muted);">/100</span></div>
+                <div class="metric-sub">MEDIUM severity rating</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">AI Traffic Classification</div>
+                <div class="metric-value" style="font-size: 1.15rem;">VPN-FT</div>
+                <div class="metric-sub">XGBoost ML inference</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Raw Top-Class Score</div>
+                <div class="metric-value">
+                
+                    60.1%
+                
+                </div>
+                <div class="metric-sub">Uncalibrated softmax score; not a calibrated probability</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Observed Cipher Suite</div>
+                <div class="metric-value" style="font-size: 1.05rem;">3DES</div>
+                <div class="metric-sub">unknown</div>
+            </div>
+        </div>
+
+        <!-- 3x3 Threat Matrix -->
+        <div class="section-title">3x3 Threat Matrix (Severity vs Likelihood)</div>
+        <div class="matrix-container">
+            <div class="matrix-grid">
+                <div></div>
+                <div class="matrix-header">Low Impact</div>
+                <div class="matrix-header">Med Impact</div>
+                <div class="matrix-header">High Impact</div>
+
+                <div class="matrix-row-label">High Likelihood</div>
+                <div class="matrix-cell matrix-med">Medium</div>
+                <div class="matrix-cell matrix-high">High</div>
+                <div class="matrix-cell matrix-high">Critical</div>
+
+                <div class="matrix-row-label">Med Likelihood</div>
+                <div class="matrix-cell matrix-low">Low</div>
+                <div class="matrix-cell matrix-med">Medium</div>
+                <div class="matrix-cell matrix-high">High</div>
+
+                <div class="matrix-row-label">Low Likelihood</div>
+                <div class="matrix-cell matrix-low">Low</div>
+                <div class="matrix-cell matrix-low">Low</div>
+                <div class="matrix-cell matrix-med">Medium</div>
+            </div>
+        </div>
+
+        <!-- Cryptographic Parameters Table (PS-26160 Full Compliance) -->
+        <div class="section-title">Cryptographic &amp; Protocol Compliance Parameters</div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 32%;">Parameter (PS-26160 Compliance)</th>
+                        <th style="width: 38%;">Observed Value</th>
+                        <th style="width: 30%;">Compliance Baseline (NIST / RFC)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IPsec Protocol / IKE Version</strong></td>
+                        <td><code>IKEv2</code> (IKE_SA_INIT)</td>
+                        <td>IKEv2 (RFC 7296)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VPN Operating Mode</strong></td>
+                        <td><code>Tunnel</code></td>
+                        <td>Tunnel Mode (RFC 4301 Envelope)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Encryption Cipher &amp; Key Size</strong></td>
+                        <td><code>3DES</code> (key length unverified)</td>
+                        <td>AES-256-GCM / AES-256-CBC</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integrity &amp; PRF Algorithm</strong></td>
+                        <td><code>unknown</code> &bull; PRF: <code>unknown</code></td>
+                        <td>AEAD / HMAC-SHA2-256+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diffie-Hellman Key Exchange</strong></td>
+                        <td><code>Group unknown</code></td>
+                        <td>Group 14, 19, 20, 21, 28 (&ge; 2048-bit)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfect Forward Secrecy (PFS)</strong></td>
+                        <td><code>Unverified</code></td>
+                        <td>PFS Enforced (Per-Child SA DH)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anti-Replay Protection</strong></td>
+                        <td><code>Unverified</code></td>
+                        <td>RFC 4303 Anti-Replay Window Enforced</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SA Key Lifetime</strong></td>
+                        <td><code>Unverified</code></td>
+                        <td>&le; 28,800 seconds (NIST SP 800-77)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network Layer &amp; Metadata Exposure</strong></td>
+                        <td><code>IPv4</code> &bull; <code>192.168.1.10 &rarr; 10.0.0.1</code></td>
+                        <td>IPv4/IPv6 Protected (NAT-T UDP 4500)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security Association SPIs</strong></td>
+                        <td><code>Init: 1122334455667788</code> &bull; <code>Resp: 0000000000000000</code></td>
+                        <td>Valid 64-bit Non-Zero SPI Pair</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inferred Encrypted Traffic Class</strong></td>
+                        <td><code>VPN-FT</code> (60.1% uncalibrated top-class score)</td>
+                        <td>XGBoost Multi-Class Payload Inference</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Plain-English Rationale -->
+        <div class="section-title">Plain-English Component Rationale</div>
+        
+            
+            <div class="finding-card SECURE">
+                <div class="finding-header">
+                    <span class="finding-title"> Modern IKEv2 Protocol Engine (RFC 7296) &mdash; <code>IKEv2 (RFC 7296)</code></span>
+                    <span class="badge badge-secure">SECURE</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Manages your VPN connection lifecycle with high speed, instant auto-reconnect, and seamless network mobility across Wi-Fi and 5G.</p>
+                    <p style="margin-top: 6px;">IKEv2 acts as the intelligent digital negotiator for your VPN. Imagine traveling on a train where your laptop switches between station Wi-Fi and 5G cellular - older VPNs would freeze or crash, forcing you to log in again. IKEv2 natively uses MOBIKE (RFC 4555) technology to instantly shift your encrypted session between network connections without dropping active video calls or web apps. Additionally, it uses a streamlined 4-message exchange (IKE_SA_INIT & IKE_AUTH) with built-in cookie challenges to protect your server against hacker overload (DoS SYN-flood) attacks.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card OBSOLETE">
+                <div class="finding-header">
+                    <span class="finding-title"> Obsolete 3DES-CBC Cipher (Vulnerable to Sweet32 Collision Attacks) &mdash; <code>3DES-CBC (Triple-DES)</code></span>
+                    <span class="badge badge-high">OBSOLETE</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Obsolete 1990s 64-bit encryption block cipher that modern high-speed computers can break through data collision attacks.</p>
+                    <p style="margin-top: 6px;">Triple-DES scrambles data by running the 1970s DES algorithm 3 times in sequence. However, because it uses tiny 64-bit blocks of data, modern security research (Sweet32 attack / CVE-2016-2183) proves that an eavesdropper capturing around 32GB of high-speed VPN traffic can mathematically break the encryption and recover secret plaintext data. Formally retired and forbidden by NIST SP 800-131A guidelines.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card INFO">
+                <div class="finding-header">
+                    <span class="finding-title"> Cryptographic Key Agreement (DH Group Standard) &mdash; <code>Standard Group</code></span>
+                    <span class="badge badge-secure">INFO</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Mathematical method allowing VPN endpoints to securely agree on session keys.</p>
+                    <p style="margin-top: 6px;">Protects key distribution so adversaries watching network traffic cannot deduce session encryption keys for DH Group unknown.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card WEAK">
+                <div class="finding-header">
+                    <span class="finding-title"> PFS Disabled (Retroactive Decryption Exposure) &mdash; <code>Disabled / Static Master Derivation</code></span>
+                    <span class="badge badge-medium">WEAK</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> CRITICAL RISK: Data session keys depend on the master server key - stealing the server key allows hackers to decrypt all recorded past traffic.</p>
+                    <p style="margin-top: 6px;">Without PFS, session keys for data traffic depend directly on the main initial master key of the VPN tunnel. If an adversary records encrypted network traffic today and later compromises the VPN gateway's private key, they can retroactively decrypt all historical captured data.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card SECURE">
+                <div class="finding-header">
+                    <span class="finding-title"> IPsec Tunnel Mode Encapsulation (Complete Outer IP Envelope) &mdash; <code>Tunnel Mode (Outer IP Wrapping)</code></span>
+                    <span class="badge badge-secure">SECURE</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Encloses your entire original IP packet - including private source and destination IP addresses - inside a brand-new encrypted outer IP envelope.</p>
+                    <p style="margin-top: 6px;">Think of Transport Mode as sending a postcard where the message is written in code, but the sender and recipient home addresses are clearly visible on the outside. Tunnel Mode is like placing that entire postcard inside a thick, opaque courier envelope addressed only between two secure VPN gateways. Eavesdroppers, ISPs, or hackers monitoring public internet routers cannot see your internal company IP addresses, device names, or network architecture - they only see encrypted traffic traveling between the two public gateway endpoints.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card SECURE">
+                <div class="finding-header">
+                    <span class="finding-title"> AI Behavioral Pattern Recognition (VPN-FT Application) &mdash; <code>VPN-FT (60.1% confidence)</code></span>
+                    <span class="badge badge-secure">SECURE</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Machine Learning identified the exact application activity ('VPN-FT') inside the VPN tunnel using behavioral traffic patterns without breaking encryption.</p>
+                    <p style="margin-top: 6px;">Even though your VPN tunnel scrambles 100% of your data packets into unreadable noise, different applications leave distinct physical signatures in how they communicate. Our trained XGBoost Machine Learning model analyzed 28 non-encrypted flow characteristics - such as packet size variations, transmission timing intervals, and bandwidth burst ratios. Like a detective identifying a person by the cadence of their footsteps without seeing their face, the AI correctly identified your tunnel activity as 'VPN-FT' with 60.1% statistical confidence, zero decryption required.</p>
+                </div>
+            </div>
+            
+            <div class="finding-card SECURE">
+                <div class="finding-header">
+                    <span class="finding-title"> Observable Network Metadata Analysis (192.168.1.10 -> 10.0.0.1) &mdash; <code>LOW Risk (Score 15/100)</code></span>
+                    <span class="badge badge-secure">SECURE</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Plain-English Summary:</strong> Assessed outer IP header visibility, unencrypted IKE identity payloads, SPI correlation risk, and Transport mode exposure (Rating: LOW).</p>
+                    <p style="margin-top: 6px;">Even when payload content is encrypted, eavesdroppers can perform side-channel traffic analysis using unencrypted metadata. Our metadata analyzer inspected outer endpoint IP pairs (192.168.1.10 -> 10.0.0.1), verified whether identity payloads ($ID_i$/$ID_r$) were transmitted in cleartext, and evaluated cleartext ESP Security Parameter Index (SPI) linkability risks. Current exposure score is 15/100.</p>
+                </div>
+            </div>
+            
+        
+
+        <!-- Security Assessment Findings -->
+        <div class="section-title">Security Findings &amp; Actionable Recommendations</div>
+        
+            
+            <div class="finding-card HIGH">
+                <div class="finding-header">
+                    <span class="finding-title">[IPSEC-ENC-001] Weak or forbidden encryption algorithm detected</span>
+                    <span class="badge badge-high">HIGH</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Observed:</strong> <code>3DES</code> &nbsp;|&nbsp; <strong>Expected Baseline:</strong> <code>Approved encryption (AES-256-GCM, AES-128-GCM, AES-256-CBC, ENCR_AES_GCM_16, ENCR_AES_CBC)</code></p>
+                </div>
+                <div class="finding-remediation">
+                    <strong>Recommended Remediation:</strong> Reconfigure IPsec proposals to use strong encryption algorithms such as AES-256-GCM.
+                </div>
+            </div>
+            
+            <div class="finding-card LOW">
+                <div class="finding-header">
+                    <span class="finding-title">[IPSEC-META-003] Static SPI Header Linkability / Session Tracking Risk</span>
+                    <span class="badge badge-low">LOW</span>
+                </div>
+                <div class="finding-body">
+                    <p><strong>Observed:</strong> <code>Observable ESP SPI(s): 0x00001000</code> &nbsp;|&nbsp; <strong>Expected Baseline:</strong> <code>Dynamic SA Rekeying & SPI Rotation</code></p>
+                </div>
+                <div class="finding-remediation">
+                    <strong>Recommended Remediation:</strong> Ensure frequent Security Association rekeying to prevent passive netflow session correlation.
+                </div>
+            </div>
+            
+        
+
+        
+        <details class="known-limitations">
+            <summary>Observed Telemetry Limitations</summary>
+            
+            <div class="limitation-item">
+                <strong>sa_lifetime</strong> &mdash; <span style="color: var(--accent-yellow);">not_observable_without_decryption</span>
+                <p style="color: var(--text-secondary); margin-top: 4px;">IKEv2 SA lifetime is negotiated in IKE_AUTH payloads which are encrypted after the IKE_SA_INIT exchange. It cannot be extracted from a PCAP without the pre-shared key or private key for decryption.</p>
+            </div>
+            
+            <div class="limitation-item">
+                <strong>pfs</strong> &mdash; <span style="color: var(--accent-yellow);">enforcement_policy_not_proven_by_capture</span>
+                <p style="color: var(--text-secondary); margin-top: 4px;">A CREATE_CHILD_SA exchange with a Diffie-Hellman KE payload can be observed in some captures, but its absence does not prove PFS is disabled and its presence does not establish the endpoint's enforcement policy.</p>
+            </div>
+            
+            <div class="limitation-item">
+                <strong>replay_protection</strong> &mdash; <span style="color: var(--accent-yellow);">window_configuration_not_observable_from_sequence_numbers</span>
+                <p style="color: var(--text-secondary); margin-top: 4px;">The ESP sequence number is visible in the ESP header, but the configured anti-replay window and enforcement behavior are not established by observing sequence numbers alone.</p>
+            </div>
+            
+        </details>
+        
+
+        <footer class="report-footer">
+            <div>PRIVCOMM &mdash; IPsec Intelligence &amp; Traffic Assessment Platform</div>
+            <div>Generated on 09 Oct 2026, 00:16 UTC &bull; Confidential</div>
+        </footer>
+    </div>
+</body>
+</html>
