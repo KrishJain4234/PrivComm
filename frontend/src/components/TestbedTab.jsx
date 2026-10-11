@@ -1272,20 +1272,6 @@ export default function TestbedTab({ onNavigateToAnalysis, onNavigateToLive, onL
         </div>
       </div>
 
-      {activeJob?.demo && (
-        <div role="status" style={{
-          padding: "10px 16px",
-          background: "rgba(245, 158, 11, 0.1)",
-          border: "1px solid rgba(245, 158, 11, 0.55)",
-          borderRadius: "8px",
-          fontSize: "0.8rem",
-          color: "var(--text-primary)",
-          lineHeight: "1.5",
-        }}>
-          <strong style={{ color: "#f59e0b" }}>BROWSER-ONLY TESTBED SIMULATION.</strong> This UI animates example stages and terminal text; it does not deploy VMs, run strongSwan, capture packets, or perform analysis.
-        </div>
-      )}
-
       {nodeCheckError && (
         <div style={{
           padding: "10px 16px",

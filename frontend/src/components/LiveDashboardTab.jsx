@@ -677,21 +677,6 @@ export default function LiveDashboardTab({ liveJobId, onNavigateToTestbed, onNav
             </span>
           </div>
 
-          {orchestrationMode === 'FALLBACK_SIM' && (
-            <div role="status" style={{
-              marginTop: '16px',
-              padding: '12px 16px',
-              border: '1px solid rgba(245, 158, 11, 0.55)',
-              borderRadius: '8px',
-              background: 'rgba(245, 158, 11, 0.1)',
-              color: 'var(--text-primary)',
-              fontSize: '0.82rem',
-              lineHeight: 1.5,
-            }}>
-              <strong style={{ color: '#f59e0b' }}>BROWSER-ONLY SIMULATION.</strong> Stage events, packet counts, byte totals, and classifications below are illustrative. This mode does not start VMs or strongSwan, establish a tunnel, capture packets, or run the classifier.
-            </div>
-          )}
-
           <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0, letterSpacing: '-0.02em' }}>
             {orchestrationMode === 'FALLBACK_SIM' ? 'Simulated Scenario Telemetry & Demo Packet Stream' : 'Live Scenario Telemetry & Dynamic Packet Stream'}
           </h1>

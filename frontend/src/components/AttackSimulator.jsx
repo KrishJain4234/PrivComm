@@ -105,10 +105,6 @@ export default function AttackSimulator({ isTestbedConnected = false, topology }
           </p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <div className="attack-mode-badge is-fallback" title="Telemetry simulation only; no network actions are performed">
-            <span className="dot" />
-            <span>{isTestbedConnected ? 'Simulated Testbed Scenario' : 'Simulated Mode'}</span>
-          </div>
           <div className={`attack-vm-status ${attackVm.status === 'running' ? 'is-running' : ''}`}>
             <Activity size={16} />
             <span><strong>Telemetry Model</strong><small>{attackVm.address || 'No network endpoint'} · {attackVm.status}</small></span>
